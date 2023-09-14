@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WearFiles</string>
+    <string name="permission_alert">Для работы приложения необходимо предоставить разрешения</string>
+    <string name="grant_permissions">Предоставить разрешения</string>
+    <string name="back">Назад</string>
+    <string name="delete">Удалить</string>
+    <string name="cut">Вырезать</string>
+    <string name="copy">Копировать</string>
+    <string name="move_here">Переместить сюда</string>
+    <string name="new_folder">Создать папку</string>
+    <string name="create_folder">Создать</string>
+    <string name="folder_name">Имя папки</string>
+    <string name="rename">Переименовать</string>
+    <string name="no_program_to_open">Нечем открыть файл</string>
+    <string name="opening_error">Ошибка при открытии файла</string>
+    <string name="storage">Память устройства</string>
+    <string name="paste">Вставить</string>
+    <string name="settings">Настройки</string>
+    <string name="override_file">Этот файл уже существует.\nПерезаписать его?</string>
+</resources>

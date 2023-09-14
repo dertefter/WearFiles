@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">WearFiles</string>
+    <string name="permission_alert">Permissions must be granted for the app to work</string>
+    <string name="grant_permissions">Grant permissions</string>
+    <string name="back">Back</string>
+    <string name="delete">Delete</string>
+    <string name="cut">Cut</string>
+    <string name="copy">Copy</string>
+    <string name="move_here">Move</string>
+    <string name="paste">Paste</string>
+    <string name="new_folder">New folder</string>
+    <string name="create_folder">Create folder</string>
+    <string name="folder_name">Folder Name</string>
+    <string name="rename">Rename</string>
+    <string name="no_program_to_open">Nothing to open the file</string>
+    <string name="opening_error">Error opening file</string>
+    <string name="storage">Storage</string>
+    <string name="settings">Settings</string>
+    <string name="override_file">This file already exists.\nDo you want to overwrite it?</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+
+</resources>

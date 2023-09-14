@@ -1,0 +1,5 @@
+<resources>
+    <style name="Theme.App" parent="@android:style/Theme.DeviceDefault">
+        <item name="android:windowSwipeToDismiss">true</item>
+    </style>
+</resources>
