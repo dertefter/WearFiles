@@ -13,3 +13,6 @@ Manage your files using your wearable device! 📁
 ## Downloads
 
 [Releases Page](https://github.com/dertefter/WearFiles/releases)
+
+
+P.S. I'm very tired. 
