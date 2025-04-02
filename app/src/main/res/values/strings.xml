@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">WearFiles</string>
-    <string name="permission_alert">Permissions must be granted for the app to work</string>
+    <string name="permission_alert">"Due to limitations of the Wear OS platform, the app cannot grant permission to access files.\nYou need to do this manually.\n\n1. Connect to the watch via ADB\n2. Run the following command:\nadb shell appops set --uid com.dertefter.wearfiles MANAGE_EXTERNAL_STORAGE allow\n3. Restart the app\n\nI'm very sorry that you have to deal with such inconvenience, but this is the only way to make the app work."</string>
     <string name="grant_permissions">Grant permissions</string>
     <string name="back">Back</string>
     <string name="delete">Delete</string>
@@ -8,8 +8,8 @@
     <string name="copy">Copy</string>
     <string name="move_here">Move</string>
     <string name="paste">Paste</string>
-    <string name="new_folder">New folder</string>
-    <string name="create_folder">Create folder</string>
+    <string name="new_folder">New folder here</string>
+    <string name="create_folder">Create new folder</string>
     <string name="folder_name">Folder Name</string>
     <string name="rename">Rename</string>
     <string name="no_program_to_open">Nothing to open the file</string>
@@ -17,6 +17,9 @@
     <string name="storage">Storage</string>
     <string name="settings">Settings</string>
     <string name="override_file">This file already exists.\nDo you want to overwrite it?</string>
+    <string name="open">Open</string>
+    <string name="are_you_sure">Are you sure?</string>
+    <string name="try_get_permissions">Try to get permission automatically</string>
     <!--
     This string is used for square devices and overridden by hello_world in
     values-round/strings.xml for round devices.

@@ -4,22 +4,17 @@
     android:layout_width="match_parent"
     android:layout_height="48dp"
     android:layout_gravity="center"
-    android:layout_marginTop="2dp"
-    android:layout_marginBottom="1dp"
     android:clickable="true"
     android:foreground="?android:attr/selectableItemBackground"
     android:longClickable="true"
-    app:cardBackgroundColor="@color/surface"
-    app:cardCornerRadius="@dimen/corner_radius"
-    app:contentPaddingBottom="8dp"
-    app:contentPaddingLeft="12dp"
-    app:contentPaddingRight="12dp"
-    app:contentPaddingTop="8dp">
+    app:cardBackgroundColor="?attr/colorSurfaceContainer"
+    app:cardCornerRadius="@dimen/corner_radius">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingHorizontal="8dp">
 
         <ImageView
             android:id="@+id/item_icon"
@@ -27,9 +22,8 @@
             android:layout_height="24dp"
             android:layout_gravity="center_vertical"
             android:layout_marginEnd="8dp"
-            android:tintMode="add"
             app:srcCompat="@drawable/folder"
-            app:tint="@color/onSurface" />
+            app:tint="?attr/colorOnSurface" />
 
         <TextView
             android:id="@+id/item_name"
@@ -37,9 +31,11 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:ellipsize="end"
+            android:fontFamily="sans-serif-medium"
             android:maxLength="30"
             android:maxLines="1"
-            android:textColor="@color/onSurface"
+            android:text="ddsvdkvdkvdkvdskvdsk"
+            android:textColor="?attr/colorOnSurface"
             android:textSize="16sp" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

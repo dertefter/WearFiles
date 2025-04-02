@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="top_padding">48dp</dimen>
     <dimen name="splash_screen_icon_size">48dp</dimen>
-    <dimen name="left_right_padding">28dp</dimen>
-    <dimen name="top_bottom_padding">48dp</dimen>
     <dimen name="corner_radius">24dp</dimen>
+    <dimen name="spacing">4dp</dimen>
 </resources>

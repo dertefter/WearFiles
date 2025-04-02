@@ -3,25 +3,64 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-feature android:name="android.hardware.type.watch" />
+
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name=" android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION"/>
-    <uses-permission android:name="android.permission.MEDIA_CONTENT_CONTROL"/>
-    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO"/>
-    <uses-permission android:name="android.permission.MANAGE_MEDIA"/>
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+    <uses-permission android:name=" android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_MEDIA_LOCATION" />
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
+    <uses-permission android:name="android.permission.MANAGE_MEDIA" />
 
     <application
-        android:requestLegacyExternalStorage="true"
-        android:isSplitRequired="true"
+        android:name=".WearFiles"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
+        android:isSplitRequired="true"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:supportsRtl="true"
-        android:name=".WearFiles"
-        android:theme="@style/Theme.App">
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="true"
+            android:manageSpaceActivity="true"
+            android:taskAffinity=".ui.MainActivity">
+        </activity>
+
+        <activity
+            android:name=".ui.FileActivity"
+            android:exported="true"
+            android:manageSpaceActivity="true"
+            android:taskAffinity=".ui.FileActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.MenuActivity"
+            android:noHistory="true"
+            android:exported="true"
+            android:manageSpaceActivity="true"
+            android:taskAffinity=".ui.FileActivity"/>
+
+        <activity android:name=".ui.actions.ActionDeleteActivity"
+            android:exported="true"
+            android:manageSpaceActivity="true"
+            android:taskAffinity=".ui.FileActivity"/>
+
+        <activity android:name=".ui.actions.ActionRenameActivity"
+            android:exported="true"
+            android:manageSpaceActivity="true"
+            android:taskAffinity=".ui.FileActivity"/>
+
+        <activity android:name=".ui.actions.ActionNewFolderActivity"
+            android:exported="true"
+            android:manageSpaceActivity="true"
+            android:taskAffinity=".ui.FileActivity"/>
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"
@@ -31,17 +70,6 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths" />
         </provider>
-        <activity
-            android:manageSpaceActivity="true"
-            android:name=".MainActivity"
-            android:exported="true">
-
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
 
         <uses-library
             android:name="com.google.android.wearable"
@@ -53,7 +81,6 @@
         <meta-data
             android:name="com.google.android.wearable.standalone"
             android:value="true" />
-
     </application>
 
 </manifest>

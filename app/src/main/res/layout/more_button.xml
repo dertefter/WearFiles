@@ -1,53 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:layout_marginTop="1dp"
-    android:layout_marginBottom="1dp"
-    android:elevation="0dp"
-    app:cardBackgroundColor="@android:color/transparent"
-    app:cardElevation="0dp"
-    app:cardMaxElevation="0dp"
-    app:contentPadding="8dp">
+    android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/item_name"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:ellipsize="end"
-        android:maxLength="30"
-        android:maxLines="1"
-        android:text="@string/back"
-        android:textColor="@color/onSecondaryContainer"
-        android:textSize="16sp"
-        android:visibility="gone" />
+        android:layout_gravity="center_horizontal"
+        android:orientation="horizontal">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/more_button"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_gravity="center"
-        android:background="@drawable/button_background_enabled"
-        android:backgroundTint="@color/secondaryContainer"
-        android:clickable="true"
-        android:elevation="0dp"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:longClickable="true"
-        app:cardCornerRadius="24dp"
-        app:cardElevation="0dp"
-        app:cardMaxElevation="0dp"
-        app:contentPadding="10dp">
+        <Button
+            android:id="@+id/back_button"
+            style="@style/Widget.Material3.Button.IconButton.Filled"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="?attr/colorSecondaryContainer"
+            app:cornerRadius="@dimen/corner_radius"
+            app:icon="@drawable/arrow_back"
+            app:iconTint="?attr/colorOnSecondaryContainer" />
 
-        <ImageView
-            android:id="@+id/item_icon"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:tint="@color/onSecondaryContainer"
-            app:srcCompat="@drawable/menu" />
-    </androidx.cardview.widget.CardView>
+        <Button
+            android:id="@+id/more_button"
+            style="@style/Widget.Material3.Button.IconButton.Filled"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="?attr/colorPrimaryContainer"
+            app:cornerRadius="@dimen/corner_radius"
+            app:icon="@drawable/menu"
+            app:iconTint="?attr/colorOnPrimaryContainer" />
+    </LinearLayout>
 
-</androidx.cardview.widget.CardView>
+</FrameLayout>
