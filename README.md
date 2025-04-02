@@ -10,4 +10,6 @@ Manage your files using your wearable device! 📁
 -Create, remove, rename, cut, and copy folders and files in your device storage.
 -Access your music, photos, videos, and other files.
 
-[Downloads](https://github.com/dertefter/WearFiles/releases)
+## Downloads
+
+[Releases Page](https://github.com/dertefter/WearFiles/releases)
