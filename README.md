@@ -1,15 +1,29 @@
-# Wearable File Manager
+# WearFiles
 
-![Wearable File Manager](screenshots/Screenshot_20230903_000846.png)
+[![Static Badge](https://img.shields.io/badge/Google_Play-available-green?style=for-the-badge&logo=google-play)](https://play.google.com/store/apps/details?id=com.dertefter.wearfiles)
 
-Manage your files using your wearable device! 📁
+![WearFiles Banner](screenshots/banner.jpg)
 
-## Features
+**WearFiles** is a simple file manager for Wear OS smartwatches.
 
--Designed for Wear OS
--Create, remove, rename, cut, and copy folders and files in your device storage.
--Access your music, photos, videos, and other files.
+## 📌 Features
+- 📂 View and open files
+- 🗑 Delete files
+- ✂️ Cut/📋 Copy/📌 Paste files
 
-## Downloads
+## ⚠️ Important
+Due to Wear OS platform restrictions, the app cannot grant file access permissions on its own. You need to do this manually:
 
-[Releases Page](https://github.com/dertefter/WearFiles/releases)
+1. Connect your watch to a computer via ADB.
+2. Run the following command:
+
+   ```sh
+   adb shell appops set --uid com.dertefter.wearfiles MANAGE_EXTERNAL_STORAGE allow
+   ```
+
+3. Restart the app.
+
+## 📸 Screenshots
+
+![Screenshot 1](screenshots/1.png) ![Screenshot 2](screenshots/2.png) ![Screenshot 3](screenshots/3.png) ![Screenshot 4](screenshots/4.png)
+
