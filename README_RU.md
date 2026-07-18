@@ -63,6 +63,5 @@
    ``adb shell appops set --uid com.dertefter.wearfiles MANAGE_EXTERNAL_STORAGE allow``
 3. Перезапустите приложение
 
-### 💎 Поддержать меня
-Если вам полезен этот проект, вы можете поддержать его разработку через TON:  
-`UQBvmXutAO5dEIwf46dP-TMaA_DqsGkLFkxrDxThIfdTLSE3`
+### 💎 Поддержать меня:
+[https://www.donationalerts.com/r/dertefter](https://www.donationalerts.com/r/dertefter)
