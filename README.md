@@ -65,4 +65,4 @@ If you decide that you need full access to files, you can grant permission using
 
 ### 💎 Support me
 If you find this project useful, you can support its development via TON:  
-`UQBvmXutAO5dEIwf46dP-TMaA_DqsGkLFkxrDxThIfdTLSE3`
+[https://www.donationalerts.com/r/dertefter](https://www.donationalerts.com/r/dertefter)
