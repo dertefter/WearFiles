@@ -13,8 +13,8 @@ android {
         applicationId = "com.dertefter.wearfiles"
         minSdk = 28
         targetSdk = 37
-        versionCode = 60005
-        versionName = "3.1.3"
+        versionCode = 60007
+        versionName = "3.1.4"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }

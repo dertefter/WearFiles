@@ -18,14 +18,14 @@ plugins {
 
 android {
     namespace = "com.dertefter.wearfiles"
-    compileSdk = 36
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "com.dertefter.wearfiles"
         minSdk = 26
         targetSdk = 36
-        versionCode = 60004
-        versionName = "3.1.3"
+        versionCode = 60006
+        versionName = "3.1.4"
     }
 
     signingConfigs {
