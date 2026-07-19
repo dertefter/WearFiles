@@ -80,9 +80,13 @@ class FileReceiverService : WearableListenerService() {
             
             Log.d("FileReceiverService", "File saved successfully!")
             
-            Wearable.getMessageClient(this)
-                .sendMessage(nodeId, "/file-transfer-status", "success:$fileName".toByteArray())
-                .await()
+            try {
+                Wearable.getMessageClient(this)
+                    .sendMessage(nodeId, "/file-transfer-status", "success:$fileName".toByteArray())
+                    .await()
+            } catch (e: Exception) {
+                Log.w("FileReceiverService", "Failed to send success status: ${e.message}")
+            }
                 
         } catch (e: Exception) {
             Log.e("FileReceiverService", "Error receiving file", e)
@@ -91,11 +95,19 @@ class FileReceiverService : WearableListenerService() {
                 file.delete()
             }
 
-            Wearable.getMessageClient(this)
-                .sendMessage(nodeId, "/file-transfer-status", "error:$fileName".toByteArray())
-                .await()
+            try {
+                Wearable.getMessageClient(this)
+                    .sendMessage(nodeId, "/file-transfer-status", "error:$fileName".toByteArray())
+                    .await()
+            } catch (sendException: Exception) {
+                Log.w("FileReceiverService", "Failed to send error status: ${sendException.message}")
+            }
         } finally {
-            channelClient.close(channel).await()
+            try {
+                channelClient.close(channel).await()
+            } catch (closeException: Exception) {
+                Log.w("FileReceiverService", "Failed to close channel: ${closeException.message}")
+            }
         }
     }
 }
