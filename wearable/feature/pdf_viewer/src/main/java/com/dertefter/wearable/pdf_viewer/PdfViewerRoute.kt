@@ -16,6 +16,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
 import androidx.wear.compose.foundation.lazy.TransformingLazyColumn
@@ -27,7 +28,6 @@ import com.dertefter.wearable.design.components.common.rememberSafeRotaryScrolla
 import com.google.android.horologist.compose.layout.ColumnItemType
 import com.google.android.horologist.compose.layout.rememberResponsiveColumnPadding
 import dev.zt64.compose.pdf.component.PdfPage
-import dev.zt64.compose.pdf.rememberLocalPdfState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import net.engawapg.lib.zoomable.rememberZoomState
@@ -41,6 +41,7 @@ fun PdfViewerRoute(
     var isPdfValid by remember(uriString) { mutableStateOf<Boolean?>(null) }
     var errorMessage by remember(uriString) { mutableStateOf<String?>(null) }
 
+    val couldNotOpenFdError = stringResource(R.string.pdf_viewer_could_not_open_file_descriptor)
     LaunchedEffect(uriString) {
         withContext(Dispatchers.IO) {
             try {
@@ -51,7 +52,7 @@ fun PdfViewerRoute(
                     }
                 } ?: run {
                     isPdfValid = false
-                    errorMessage = "Could not open file descriptor"
+                    errorMessage = couldNotOpenFdError
                 }
             } catch (e: Exception) {
                 isPdfValid = false
@@ -62,14 +63,15 @@ fun PdfViewerRoute(
 
     if (isPdfValid == null) {
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-            Text("Loading...")
+            Text(stringResource(R.string.pdf_viewer_loading))
         }
         return
     }
 
     if (isPdfValid == false) {
+        val errorString = stringResource(R.string.pdf_viewer_invalid_pdf)
         Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-            Text("Error: ${errorMessage ?: "Invalid PDF"}")
+            Text(stringResource(R.string.pdf_viewer_error_with_message, errorMessage ?: errorString))
         }
         return
     }
@@ -81,7 +83,7 @@ fun PdfViewerRoute(
         last = ColumnItemType.Button,
     )
 
-    val pdfState = rememberLocalPdfState(uri = uriString.toUri())
+    val pdfState = rememberWearPdfState(uri = uriString.toUri())
 
     var zoomedPageIndex by remember { mutableStateOf<Int?>(null) }
 

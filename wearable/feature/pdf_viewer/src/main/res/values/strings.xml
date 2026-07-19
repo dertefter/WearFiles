@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="empty">Empty file</string>
+    <string name="pdf_viewer_empty">Empty file</string>
+    <string name="pdf_viewer_loading">Loading…</string>
+    <string name="pdf_viewer_error_with_message">Error: %1$s</string>
+    <string name="pdf_viewer_invalid_pdf">Invalid PDF</string>
+    <string name="pdf_viewer_could_not_open_file_descriptor">Could not open file descriptor</string>
 </resources>

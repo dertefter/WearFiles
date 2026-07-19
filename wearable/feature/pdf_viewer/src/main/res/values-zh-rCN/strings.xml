@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="empty">空文件</string>
+    <string name="pdf_viewer_empty">空文件</string>
+    <string name="pdf_viewer_loading">正在加载…</string>
+    <string name="pdf_viewer_error_with_message">错误: %1$s</string>
+    <string name="pdf_viewer_invalid_pdf">无效的 PDF</string>
+    <string name="pdf_viewer_could_not_open_file_descriptor">无法打开文件描述符</string>
 </resources>
