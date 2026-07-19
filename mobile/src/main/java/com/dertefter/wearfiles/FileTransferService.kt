@@ -146,7 +146,11 @@ class FileTransferService : Service() {
             TransferRepository.updateItem(item.id) { it.copy(progress = 100) }
 
         } finally {
-            channelClient.close(channel).await()
+            try {
+                channelClient.close(channel).await()
+            } catch (e: Exception) {
+                Log.w("FileTransferService", "Error closing channel: ${e.message}")
+            }
         }
     }
 
