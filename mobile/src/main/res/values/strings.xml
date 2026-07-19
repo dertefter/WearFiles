@@ -1,5 +1,5 @@
 <resources>
-    <string name="mobile_app_name">Send to Wearable</string>
+    <string name="mobile_app_name" translatable="false">WearFiles</string>
     <string name="select_files">Select files</string>
     <string name="queue_empty">Queue is empty</string>
     <string name="transfer_queue_title">File transfer queue</string>

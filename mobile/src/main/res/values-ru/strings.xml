@@ -1,5 +1,4 @@
 <resources>
-    <string name="mobile_app_name">Отправить на часы</string>
     <string name="select_files">Выбрать файлы</string>
     <string name="queue_empty">Очередь пуста</string>
     <string name="transfer_queue_title">Очередь отправки файлов</string>
