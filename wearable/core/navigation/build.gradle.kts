@@ -16,7 +16,7 @@ plugins {
 android {
     namespace = "com.dertefter.wearable.navigation"
     //noinspection GradleDependency
-    compileSdk = 36
+    compileSdk = 37
 
     defaultConfig {
         minSdk = 26

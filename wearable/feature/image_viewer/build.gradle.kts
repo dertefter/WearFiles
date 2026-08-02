@@ -16,7 +16,7 @@ plugins {
 android {
     namespace = "com.dertefter.wearable.image_viewer"
     compileSdk {
-        version = release(36)
+        version = release(37)
     }
 
     defaultConfig {

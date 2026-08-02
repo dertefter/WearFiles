@@ -17,7 +17,7 @@ plugins {
 android {
     namespace = "com.dertefter.wearable.delete"
     compileSdk {
-        version = release(36)
+        version = release(37)
     }
 
     defaultConfig {

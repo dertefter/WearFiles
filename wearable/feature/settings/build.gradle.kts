@@ -17,7 +17,7 @@ plugins {
 android {
     namespace = "com.dertefter.wearable.settings"
     compileSdk {
-        version = release(36)
+        version = release(37)
     }
 
     defaultConfig {
