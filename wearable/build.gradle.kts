@@ -23,7 +23,7 @@ android {
     defaultConfig {
         applicationId = "com.dertefter.wearfiles"
         minSdk = 26
-        targetSdk = 36
+        targetSdk = 37
         versionCode = 60006
         versionName = "3.1.4"
     }
