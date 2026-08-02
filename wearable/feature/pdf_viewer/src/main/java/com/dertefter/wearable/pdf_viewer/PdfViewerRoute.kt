@@ -27,7 +27,6 @@ import androidx.wear.compose.material3.Text
 import com.dertefter.wearable.design.components.common.rememberSafeRotaryScrollableBehavior
 import com.google.android.horologist.compose.layout.ColumnItemType
 import com.google.android.horologist.compose.layout.rememberResponsiveColumnPadding
-import dev.zt64.compose.pdf.component.PdfPage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import net.engawapg.lib.zoomable.rememberZoomState
@@ -84,6 +83,13 @@ fun PdfViewerRoute(
     )
 
     val pdfState = rememberWearPdfState(uri = uriString.toUri())
+
+    if (pdfState == null) {
+        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+            Text(stringResource(R.string.pdf_viewer_loading))
+        }
+        return
+    }
 
     var zoomedPageIndex by remember { mutableStateOf<Int?>(null) }
 

@@ -1,46 +1,81 @@
 package com.dertefter.wearable.pdf_viewer
 
 import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.Color
 import android.graphics.pdf.PdfRenderer
 import android.net.Uri
 import android.os.ParcelFileDescriptor
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.DisposableEffect
-import androidx.compose.runtime.Stable
-import androidx.compose.runtime.remember
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.runtime.*
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.asImageBitmap
-import androidx.compose.ui.graphics.painter.BitmapPainter
-import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import dev.zt64.compose.pdf.PdfState
-import androidx.core.graphics.createBitmap
+import androidx.compose.ui.unit.IntSize
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.sync.Mutex
+import kotlinx.coroutines.sync.withLock
+import kotlinx.coroutines.withContext
 
+/**
+ * Thread-safe PDF state management for Wear OS.
+ * Uses a Mutex to ensure only one page is opened in the PdfRenderer at a time.
+ */
 @Stable
-class WearPdfState(private val pfd: ParcelFileDescriptor) : PdfState {
+class WearPdfState(
+    private val pfd: ParcelFileDescriptor
+) {
     private val renderer = PdfRenderer(pfd)
-    override val pageCount: Int = renderer.pageCount
+    private val mutex = Mutex()
+    val pageCount = renderer.pageCount
 
-    override fun renderPage(index: Int): Painter {
-        if (index !in 0..<pageCount) {
-            return BitmapPainter(createBitmap(1, 1, Bitmap.Config.ALPHA_8).asImageBitmap())
-        }
+    // Cache for page sizes to avoid repeated renderer access during composition
+    private val _pageSizes = mutableStateMapOf<Int, IntSize>()
+    val pageSizes: Map<Int, IntSize> = _pageSizes
 
-        return try {
-            renderer.openPage(index).use { page ->
-                val scale = 1.2f
-                val width = (page.width * scale).toInt()
-                val height = (page.height * scale).toInt()
+    suspend fun getPageSize(index: Int): IntSize = withContext(Dispatchers.IO) {
+        mutex.withLock {
+            val cached = _pageSizes[index]
+            if (cached != null) return@withLock cached
 
-                val bmp = createBitmap(width, height)
-                page.render(bmp, null, null, PdfRenderer.Page.RENDER_MODE_FOR_DISPLAY)
-                BitmapPainter(bmp.asImageBitmap())
-            }
-        } catch (_: Exception) {
-            BitmapPainter(createBitmap(1, 1, Bitmap.Config.ALPHA_8).asImageBitmap())
+            if (index !in 0 until pageCount) return@withLock IntSize(0, 0)
+
+            val page = renderer.openPage(index)
+            val size = IntSize(page.width, page.height)
+            page.close()
+            _pageSizes[index] = size
+            size
         }
     }
 
-    override fun close() {
+    suspend fun renderPage(index: Int, zoom: Float = 1.2f): ImageBitmap? = withContext(Dispatchers.IO) {
+        mutex.withLock {
+            if (index !in 0 until pageCount) return@withLock null
+
+            try {
+                val page = renderer.openPage(index)
+                val width = (page.width * zoom).toInt()
+                val height = (page.height * zoom).toInt()
+                
+                val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
+                val canvas = Canvas(bitmap)
+                canvas.drawColor(Color.WHITE)
+                
+                page.render(bitmap, null, null, PdfRenderer.Page.RENDER_MODE_FOR_DISPLAY)
+                page.close()
+                bitmap.asImageBitmap()
+            } catch (e: Exception) {
+                null
+            }
+        }
+    }
+
+    fun close() {
         try {
             renderer.close()
             pfd.close()
@@ -49,7 +84,7 @@ class WearPdfState(private val pfd: ParcelFileDescriptor) : PdfState {
 }
 
 @Composable
-fun rememberWearPdfState(uri: Uri): PdfState {
+fun rememberWearPdfState(uri: Uri): WearPdfState? {
     val context = LocalContext.current
     val state = remember(uri) {
         try {
@@ -67,12 +102,43 @@ fun rememberWearPdfState(uri: Uri): PdfState {
         }
     }
 
-    return state ?: EmptyPdfState
+    return state
 }
 
-private object EmptyPdfState : PdfState {
-    override val pageCount: Int = 0
-    override fun renderPage(index: Int): Painter = 
-        BitmapPainter(createBitmap(1, 1, Bitmap.Config.ALPHA_8).asImageBitmap())
-    override fun close() {}
+/**
+ * A custom PDF page component that safely handles rendering using WearPdfState.
+ */
+@Composable
+fun PdfPage(
+    state: WearPdfState,
+    index: Int,
+    modifier: Modifier = Modifier
+) {
+    var bitmap by remember(state, index) { mutableStateOf<ImageBitmap?>(null) }
+    val pageSize = state.pageSizes[index]
+
+    LaunchedEffect(state, index) {
+        if (pageSize == null) {
+            state.getPageSize(index)
+        }
+        bitmap = state.renderPage(index)
+    }
+
+    if (bitmap != null && pageSize != null) {
+        Image(
+            bitmap = bitmap!!,
+            contentDescription = "Page $index",
+            modifier = modifier
+                .fillMaxWidth()
+                .aspectRatio(pageSize.width.toFloat() / pageSize.height.toFloat()),
+            contentScale = ContentScale.FillWidth
+        )
+    } else {
+        // Placeholder with standard aspect ratio
+        Box(
+            modifier = modifier
+                .fillMaxWidth()
+                .aspectRatio(0.75f)
+        )
+    }
 }
