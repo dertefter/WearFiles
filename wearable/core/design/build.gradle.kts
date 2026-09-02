@@ -15,18 +15,12 @@ plugins {
 
 android {
     namespace = "com.dertefter.wearable.design"
-    //noinspection GradleDependency
     compileSdk = 37
 
     defaultConfig {
         minSdk = 26
     }
 
-    buildTypes {
-        getByName("release") {
-            isMinifyEnabled = false
-        }
-    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
