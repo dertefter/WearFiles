@@ -65,3 +65,13 @@ If you decide that you need full access to files, you can grant permission using
 
 ### 💎 Support me:
 [https://www.donationalerts.com/r/dertefter](https://www.donationalerts.com/r/dertefter)
+
+## Star History
+
+<a href="https://star-history.dera.page/#dertefter/WearFiles">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://star-history.dera.page/svg?repos=dertefter/WearFiles&theme=dark" />
+   <source media="(prefers-color-scheme: light)" srcset="https://star-history.dera.page/svg?repos=dertefter/WearFiles" />
+   <img alt="Star History Chart" src="https://star-history.dera.page/svg?repos=dertefter/WearFiles" />
+ </picture>
+</a>
