@@ -4,6 +4,7 @@ import android.graphics.pdf.PdfRenderer
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -21,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
 import androidx.wear.compose.foundation.lazy.TransformingLazyColumn
 import androidx.wear.compose.foundation.lazy.rememberTransformingLazyColumnState
+import androidx.wear.compose.material3.MaterialTheme
 import androidx.wear.compose.material3.ScreenScaffold
 import androidx.wear.compose.material3.ScrollIndicator
 import androidx.wear.compose.material3.Text
@@ -127,8 +129,10 @@ fun PdfViewerRoute(
                     PdfPage(
                         pdfState,
                         index = i,
+                        zoom = zoomState.scale,
                         modifier = Modifier
                             .zoomable(zoomState)
+                            .background(MaterialTheme.colorScheme.surfaceContainerLow)
                     )
                 }
             }
