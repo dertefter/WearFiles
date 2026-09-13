@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="success_container">#b2f1c1</color>
-    <color name="on_success_container">#12512e</color>
+    <color name="success_container">#12512e</color>
+    <color name="on_success_container">#b2f1c1</color>
     <color name="warn_container">#f5e389</color>
     <color name="on_warn_container">#514700</color>
 </resources>

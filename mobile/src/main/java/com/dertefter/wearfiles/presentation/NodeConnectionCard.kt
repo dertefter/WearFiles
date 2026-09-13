@@ -1,5 +1,6 @@
 package com.dertefter.wearfiles.presentation
 
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.LinearEasing
 import androidx.compose.animation.core.RepeatMode
@@ -8,7 +9,7 @@ import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -24,15 +25,18 @@ import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialShapes
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.toShape
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.colorResource
@@ -45,6 +49,7 @@ import com.dertefter.wearfiles.R
 import com.dertefter.wearfiles.data.ConnectionStatus
 import com.dertefter.wearfiles.data.WearNode
 import com.dertefter.wearfiles.ui.theme.WearFilesTheme
+import com.materialkolor.ktx.harmonize
 
 @Composable
 fun NodeSelectionPager(
@@ -55,8 +60,10 @@ fun NodeSelectionPager(
 ) {
     if (nodes.isEmpty()) {
         NodeConnectionCard(
-            modifier = modifier,
-            name = stringResource(R.string.watch_not_found),
+            modifier = modifier
+                .padding( horizontal = 14.dp,
+                    vertical = 4.dp),
+            name = "",
             status = ConnectionStatus.NOT_CONNECTED,
             isSelected = false
         )
@@ -77,10 +84,10 @@ fun NodeSelectionPager(
         state = pagerState,
         modifier = modifier.fillMaxWidth(),
         contentPadding = PaddingValues(
-            horizontal = 24.dp,
+            horizontal = 14.dp,
             vertical = 4.dp
         ),
-        pageSpacing = 8.dp
+        pageSpacing = 4.dp
     ) { page ->
         val node = nodes[page]
         NodeConnectionCard(
@@ -91,6 +98,7 @@ fun NodeSelectionPager(
     }
 }
 
+@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun NodeConnectionCard(
     modifier: Modifier = Modifier,
@@ -104,13 +112,13 @@ fun NodeConnectionCard(
         if (isSelected) colorResource(R.color.on_success_container) else colorResource(R.color.success_container)
     } else {
         if (isSelected) colorResource(R.color.on_warn_container) else colorResource(R.color.warn_container)
-    }
+    }.harmonize(MaterialTheme.colorScheme.primary, false)
 
     val targetContentColor = if (isReady) {
         if (isSelected) colorResource(R.color.success_container) else colorResource(R.color.on_success_container)
     } else {
         if (isSelected) colorResource(R.color.warn_container) else colorResource(R.color.on_warn_container)
-    }
+    }.harmonize(MaterialTheme.colorScheme.primary, false)
 
     val containerColor by animateColorAsState(targetContainerColor, label = "containerColor")
     val contentColor by animateColorAsState(targetContentColor, label = "contentColor")
@@ -150,6 +158,9 @@ fun NodeConnectionCard(
         modifier = modifier
             .fillMaxWidth(),
         shape = RoundedCornerShape(24.dp),
+        elevation = CardDefaults.cardElevation(
+            defaultElevation = 8.dp
+        ),
         colors = CardDefaults.outlinedCardColors(
             containerColor = containerColor,
             contentColor = contentColor,
@@ -168,15 +179,6 @@ fun NodeConnectionCard(
 
             ) {
                 Icon(
-                    painter = painterResource(R.drawable.some_shape),
-                    contentDescription = null,
-                    tint = iconBgColor,
-                    modifier = Modifier.graphicsLayer {
-                        rotationZ = if (status == ConnectionStatus.READY) angleState.value else 0f
-                    }
-                )
-
-                Icon(
                     painter = painterResource(id = iconRes),
                     contentDescription = null,
                     tint = iconTintColor,
@@ -186,6 +188,8 @@ fun NodeConnectionCard(
                             scaleX = s
                             scaleY = s
                         }
+                        .clip(MaterialShapes.Cookie12Sided.toShape(angleState.value.toInt()))
+                        .background(iconBgColor)
                         .padding(8.dp)
                         .fillMaxSize()
                 )
@@ -196,11 +200,15 @@ fun NodeConnectionCard(
 
             Column {
 
-                Text(
-                    text = name,
-                    style = MaterialTheme.typography.titleSmall,
-                    fontWeight = FontWeight.Bold
-                )
+                AnimatedVisibility(
+                    name.isNotEmpty()
+                ) {
+                    Text(
+                        text = name,
+                        style = MaterialTheme.typography.titleSmall,
+                        fontWeight = FontWeight.Bold
+                    )
+                }
 
                 Text(
                     text = when (status) {
@@ -226,19 +234,34 @@ fun NodeConnectionCard(
     }
 }
 
+
 @Preview(showBackground = true)
 @Composable
-fun NodeConnectionCardPreview_Connected() {
+fun NodeSelectionPagerPreview() {
+    val nodes = listOf(
+        WearNode("1", "Galaxy Watch 4", ConnectionStatus.READY),
+        WearNode("2", "Pixel Watch", ConnectionStatus.NOT_CONNECTED),
+        WearNode("3", "TicWatch Pro", ConnectionStatus.APP_NOT_INSTALLED)
+    )
     WearFilesTheme {
+        NodeSelectionPager(
+            nodes = nodes,
+            selectedNodeId = "1",
+            onNodeSelected = {}
+        )
+    }
 
-        Column(
-            modifier = Modifier.padding(8.dp),
-            verticalArrangement = Arrangement.spacedBy(8.dp)
-        ) {
-            NodeConnectionCard(status = ConnectionStatus.READY, name = "TEST", isSelected = false)
-            NodeConnectionCard(status = ConnectionStatus.READY, name = "TEST", isSelected = true)
-        }
+}
 
-
+@Preview(showBackground = true)
+@Composable
+fun NodeSelectionPagerPreview2() {
+    WearFilesTheme {
+        NodeSelectionPager(
+            nodes = emptyList(),
+            selectedNodeId = "1",
+            onNodeSelected = {}
+        )
     }
 }
+

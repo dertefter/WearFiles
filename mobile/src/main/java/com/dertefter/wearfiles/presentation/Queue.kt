@@ -4,36 +4,30 @@ import android.content.Intent
 import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.foundation.background
+import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.dertefter.wearfiles.FileTransferService
 import com.dertefter.wearfiles.R
 import com.dertefter.wearfiles.WearableFileSender
-import com.dertefter.wearfiles.data.ConnectionStatus
 import com.dertefter.wearfiles.data.TransferItem
 import com.dertefter.wearfiles.data.TransferRepository
 import com.dertefter.wearfiles.data.TransferStatus
 import com.dertefter.wearfiles.ui.theme.WearFilesTheme
 
 @Composable
-fun FilePickerScreen(
+fun Queue(
     modifier: Modifier = Modifier,
     initialUris: List<Uri> = emptyList(),
     contentPadding: PaddingValues = PaddingValues(),
@@ -59,9 +53,9 @@ fun FilePickerScreen(
         }
     }
 
-    FilePickerContent(
+    QueueContent(
         modifier = modifier
-            .padding(top = contentPadding.calculateTopPadding()),
+            .padding(horizontal = 14.dp),
         queue = queue,
         onSelectFiles = { launcher.launch("*/*") },
         onCancelTransfer = { item ->
@@ -76,75 +70,37 @@ fun FilePickerScreen(
 }
 
 @Composable
-fun FilePickerContent(
+fun QueueContent(
     modifier: Modifier = Modifier,
     queue: List<TransferItem> = emptyList(),
     onSelectFiles: () -> Unit = {},
     onCancelTransfer: (TransferItem) -> Unit = {},
     contentPadding: PaddingValues = PaddingValues(),
 ) {
-    Column(
-        modifier = modifier
-            .clip(
-                RoundedCornerShape(
-                    topStart = 32.dp,
-                    topEnd = 32.dp
-                )
-            )
-            .background(MaterialTheme.colorScheme.surface)
-            .padding(horizontal = 14.dp)
-            .padding(top = 14.dp)
-            .fillMaxWidth(),
-        horizontalAlignment = Alignment.CenterHorizontally
+    Crossfade(
+        targetState = queue.isEmpty(),
+        modifier = modifier.fillMaxSize()
     )
-    {
-        Button(
-            onClick = onSelectFiles,
-            modifier = Modifier.fillMaxWidth(),
-            enabled = TransferRepository.connectionStatus == ConnectionStatus.READY
-        ) {
-            Text(stringResource(R.string.select_files))
-        }
-
-        Spacer(modifier = Modifier.height(16.dp))
-
-        if (queue.isEmpty()) {
-            Box(modifier = Modifier.weight(1f), contentAlignment = Alignment.Center) {
-                Text(stringResource(R.string.queue_empty), color = Color.Gray)
+    { isEmpty ->
+        if (isEmpty){
+            Box(contentAlignment = Alignment.Center,modifier = Modifier.fillMaxSize()) {
+                Text(stringResource(R.string.queue_empty), color = MaterialTheme.colorScheme.onSurfaceVariant)
             }
         } else {
             LazyColumn(
-                modifier = Modifier.weight(1f),
-                contentPadding = PaddingValues(
-                    start = contentPadding.calculateStartPadding(LocalLayoutDirection.current),
-                    top = 0.dp,
-                    end = contentPadding.calculateEndPadding(LocalLayoutDirection.current),
-                    bottom = contentPadding.calculateBottomPadding()
-                ),
+                modifier = Modifier.fillMaxSize(),
+                contentPadding = contentPadding,
                 verticalArrangement = Arrangement.spacedBy(2.dp)
             ) {
-
-                item {
-                    Text(
-                        stringResource(R.string.transfer_queue_title),
-                        style = MaterialTheme.typography.labelLarge,
-                        color = MaterialTheme.colorScheme.primary,
-                        fontWeight = FontWeight(600),
-                        modifier = Modifier.padding(
-                            horizontal = 24.dp,
-                            vertical = 4.dp
-                        )
-                    )
-                }
-
                 itemsIndexed(queue, key = { _, item -> item.id }) { index, item ->
                     TransferItem(
                         item = item,
                         onCancel = {
                             onCancelTransfer(item)
                         },
-                        isFirst = index == 0,
-                        isLast = index == queue.lastIndex
+                        index = index,
+                        count = queue.count(),
+                        modifier = Modifier.animateItem()
                     )
 
                 }
@@ -153,11 +109,11 @@ fun FilePickerContent(
     }
 }
 
-@Preview(showBackground = true)
+@Preview(showBackground = false)
 @Composable
-fun PreviewFilePickerScreen() {
+fun PreviewQueueScreen() {
     WearFilesTheme {
-        FilePickerContent(
+        QueueContent(
             queue = listOf(
                 TransferItem(
                     id = "1",
@@ -178,7 +134,7 @@ fun PreviewFilePickerScreen() {
                     id = "3",
                     targetNodeId = "node1",
                     uri = Uri.EMPTY,
-                    fileName = "video.mp4",
+                    fileName = "vidddddddddddddddddddddddddddddddddddddddddddeo.mp4",
                     status = TransferStatus.SUCCESS
                 ),
                 TransferItem(
