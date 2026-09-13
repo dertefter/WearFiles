@@ -79,4 +79,5 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.tooling)
     implementation(libs.oss.licenses.droibit)
     implementation(libs.material.kolor)
+    implementation(libs.androidx.core.splashscreen)
 }

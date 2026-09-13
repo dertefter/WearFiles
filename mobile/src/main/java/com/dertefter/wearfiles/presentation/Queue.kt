@@ -2,13 +2,16 @@ package com.dertefter.wearfiles.presentation
 
 import android.content.Intent
 import android.net.Uri
-import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.Crossfade
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
-import androidx.compose.material3.*
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
@@ -45,19 +48,10 @@ fun Queue(
         }
     }
 
-    val launcher = rememberLauncherForActivityResult(
-        contract = ActivityResultContracts.GetMultipleContents()
-    ) { uris: List<Uri> ->
-        uris.forEach { uri ->
-            fileSender.sendFileToWear(uri)
-        }
-    }
-
     QueueContent(
         modifier = modifier
             .padding(horizontal = 14.dp),
         queue = queue,
-        onSelectFiles = { launcher.launch("*/*") },
         onCancelTransfer = { item ->
             val intent = Intent(context, FileTransferService::class.java).apply {
                 action = "CANCEL_TRANSFER"
@@ -73,7 +67,6 @@ fun Queue(
 fun QueueContent(
     modifier: Modifier = Modifier,
     queue: List<TransferItem> = emptyList(),
-    onSelectFiles: () -> Unit = {},
     onCancelTransfer: (TransferItem) -> Unit = {},
     contentPadding: PaddingValues = PaddingValues(),
 ) {

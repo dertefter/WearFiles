@@ -12,12 +12,11 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/mobile_app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.WearFiles"
+        android:theme="@style/Theme.App.Starting"
         tools:targetApi="33">
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.WearFiles"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

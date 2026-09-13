@@ -11,17 +11,23 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.scaleOut
 import androidx.compose.animation.slideInHorizontally
 import androidx.compose.animation.slideOutHorizontally
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.consumeWindowInsets
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.systemBars
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.ExtendedFloatingActionButton
+import androidx.compose.material3.FabPosition
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -40,9 +46,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.dertefter.wearfiles.data.ConnectionStatus
 import com.dertefter.wearfiles.data.TransferRepository
 import com.dertefter.wearfiles.data.WearNode
 import com.dertefter.wearfiles.presentation.AboutScreen
@@ -57,19 +65,26 @@ class MainActivity : ComponentActivity() {
     private val viewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        installSplashScreen()
+
         super.onCreate(savedInstanceState)
-        handleIntent(intent)
+
         enableEdgeToEdge()
+
+        handleIntent(intent)
+
         setContent {
             WearFilesTheme {
                 val navController = rememberNavController()
                 NavHost(
+                    modifier = Modifier.background(MaterialTheme.colorScheme.background),
                     navController = navController,
                     startDestination = "main",
-                    enterTransition = { slideInHorizontally(initialOffsetX = { it }) },
-                    exitTransition = { slideOutHorizontally(targetOffsetX = { -it }) },
-                    popEnterTransition = { slideInHorizontally(initialOffsetX = { -it }) },
-                    popExitTransition = { slideOutHorizontally(targetOffsetX = { it }) }
+                    enterTransition = { slideInHorizontally(initialOffsetX = { it }) + fadeIn() },
+                    exitTransition = { slideOutHorizontally(targetOffsetX = { -it }) + fadeOut() },
+                    popEnterTransition = { slideInHorizontally(initialOffsetX = { -it }) + fadeIn() },
+                    popExitTransition = { slideOutHorizontally(targetOffsetX = { it }) + fadeOut() }
                 ) {
                     composable("main") {
                         MainScreen(
@@ -144,7 +159,7 @@ fun MainScreen(
         modifier = Modifier.fillMaxSize().nestedScroll(scrollBehavior.nestedScrollConnection),
         containerColor = MaterialTheme.colorScheme.background,
         topBar = {
-            Column(){
+            Column{
                 TopAppBar(
                     scrollBehavior = scrollBehavior,
                     modifier = Modifier.fillMaxWidth(),
@@ -159,7 +174,7 @@ fun MainScreen(
                         ) {
                             Icon(
                                 painter = painterResource(R.drawable.ic_menu),
-                                contentDescription = null
+                                contentDescription = stringResource(R.string.menu_content_description)
                             )
                         }
                     }
@@ -175,26 +190,38 @@ fun MainScreen(
             }
 
         },
+        floatingActionButtonPosition = FabPosition.Center,
         bottomBar = {
-            Column(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .navigationBarsPadding()
-                    .consumeWindowInsets(WindowInsets.systemBars)
-                 ,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ){
-                AnimatedVisibility(
-                    !selectedNodeId.isNullOrEmpty()
-                ) {
+
+            val selectedNode = availableNodes.find { it.id == selectedNodeId }
+            val isFabVisible = selectedNode?.status == ConnectionStatus.READY
+
+            AnimatedVisibility(
+                isFabVisible ,
+                enter = fadeIn() + scaleIn(),
+                exit = fadeOut() + scaleOut()
+            ) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                ){
                     ExtendedFloatingActionButton(
                         onClick = { launcher.launch("*/*") },
-                        modifier = Modifier.padding(bottom = 8.dp),
-
+                        modifier = Modifier
+                            .align(Alignment.Center)
+                            .navigationBarsPadding()
+                            .padding(vertical = 12.dp),
                     ){
+                        Icon(
+                            painter = painterResource(R.drawable.ic_upload),
+                            contentDescription = null,
+
+                            )
+                        Spacer(modifier = Modifier.width(8.dp))
                         Text(stringResource(R.string.select_files))
                     }
                 }
+
             }
 
         },

@@ -32,4 +32,11 @@
     <string name="app_not_installed">App not installed on watch</string>
     <string name="install_app_on_watch">Please install the app on your watch</string>
     <string name="bring_watch_closer">Make sure your watch is nearby</string>
+
+    <string name="about_oss_licenses">Software Licenses</string>
+    <string name="about_telegram_chat">Telegram Chat</string>
+    <string name="about_github">GitHub</string>
+    <string name="about_donate">Support Me</string>
+    <string name="back_content_description">Back</string>
+    <string name="menu_content_description">Menu</string>
 </resources>

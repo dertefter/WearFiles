@@ -31,4 +31,11 @@
     <string name="app_not_installed">Приложение не установлено на часах</string>
     <string name="install_app_on_watch">Пожалуйста, установите приложение на ваши часы</string>
     <string name="bring_watch_closer">Убедитесь, что часы находятся рядом</string>
+
+    <string name="about_oss_licenses">Лицензии ПО</string>
+    <string name="about_telegram_chat">Telegram чат</string>
+    <string name="about_github">GitHub</string>
+    <string name="about_donate">Поддержать меня</string>
+    <string name="back_content_description">Назад</string>
+    <string name="menu_content_description">Меню</string>
 </resources>

@@ -20,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.net.toUri
@@ -45,14 +46,14 @@ fun AboutScreen(
 
     val items = listOf(
         AboutItem(
-            text = "Лицензии ПО",
+            text = stringResource(R.string.about_oss_licenses),
             icon = painterResource(R.drawable.ic_article),
             onClick = {
                 context.startActivity(OssLicensesActivity.createIntent(context))
             }
         ),
         AboutItem(
-            text = "Telegram чат",
+            text = stringResource(R.string.about_telegram_chat),
             icon = painterResource(R.drawable.ic_tg),
             onClick = {
                 val intent = Intent(Intent.ACTION_VIEW, "https://t.me/+kkfSol74PUc3Mzcy".toUri())
@@ -60,7 +61,7 @@ fun AboutScreen(
             }
         ),
         AboutItem(
-            text = "GitHub",
+            text = stringResource(R.string.about_github),
             icon = painterResource(R.drawable.ic_github),
             onClick = {
                 val intent = Intent(Intent.ACTION_VIEW,
@@ -69,7 +70,7 @@ fun AboutScreen(
             }
         ),
         AboutItem(
-            text = "Поддержать меня",
+            text = stringResource(R.string.about_donate),
             icon = painterResource(R.drawable.ic_attach_money),
             onClick = {
                 val intent = Intent(Intent.ACTION_VIEW,
@@ -84,7 +85,7 @@ fun AboutScreen(
         topBar = {
             TopAppBar(
                 title = {
-                    Text("WearFiles")
+                    Text(stringResource(R.string.mobile_app_name))
                 },
                 navigationIcon = {
                     IconButton(
@@ -92,7 +93,7 @@ fun AboutScreen(
                     ) {
                         Icon(
                             painter = painterResource(R.drawable.ic_arrow_back),
-                            contentDescription = "Назад"
+                            contentDescription = stringResource(R.string.back_content_description)
                         )
                     }
                 }
