@@ -1,4 +1,5 @@
 <resources>
+    <string name="share_label">Отправить на часы</string>
     <string name="select_files">Выбрать файлы</string>
     <string name="queue_empty">Очередь пуста</string>
     <string name="transfer_queue_title">Очередь отправки файлов</string>

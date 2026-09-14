@@ -18,18 +18,25 @@
             android:name=".MainActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
-            <intent-filter>
+            <intent-filter
+                android:icon="@mipmap/ic_send_action"
+                android:label="@string/share_label"
+                >
                 <action android:name="android.intent.action.SEND" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:mimeType="*/*" />
             </intent-filter>
-            <intent-filter>
+
+            <intent-filter
+                android:icon="@mipmap/ic_send_action"
+                android:label="@string/share_label"
+                >
                 <action android:name="android.intent.action.SEND_MULTIPLE" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:mimeType="*/*" />
@@ -53,6 +60,7 @@
                     android:scheme="wear" />
             </intent-filter>
         </service>
+
     </application>
 
 </manifest>
