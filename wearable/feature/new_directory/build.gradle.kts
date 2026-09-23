@@ -16,9 +16,7 @@ plugins {
 
 android {
     namespace = "com.dertefter.wearable.new_directory"
-    compileSdk {
-        version = release(37)
-    }
+    compileSdk { version = release(37) { minorApiLevel = 1 } }
 
     defaultConfig {
         minSdk = 26
