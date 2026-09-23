@@ -5,9 +5,7 @@ import android.content.pm.PackageManager
 import android.os.Build
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
@@ -15,11 +13,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import androidx.wear.compose.foundation.lazy.TransformingLazyColumn
 import androidx.wear.compose.foundation.lazy.rememberTransformingLazyColumnState
-import androidx.wear.compose.material3.FilledIconButton
+import androidx.wear.compose.material3.EdgeButton
 import androidx.wear.compose.material3.Icon
 import androidx.wear.compose.material3.ListHeader
 import androidx.wear.compose.material3.ListSubHeader
@@ -38,6 +35,8 @@ import com.dertefter.wearable.home.R
 import com.dertefter.wearable.home.model.HomeItem
 import com.dertefter.wearable.home.model.HomeItemType
 import com.dertefter.wearable.navigation.Routes
+import com.google.android.horologist.compose.layout.ColumnItemType
+import com.google.android.horologist.compose.layout.rememberResponsiveColumnPadding
 import java.io.File
 
 @Composable
@@ -72,11 +71,23 @@ fun ContentSuccess(
 
     val transformationSpec = rememberTransformationSpec()
 
+    val contentPadding = rememberResponsiveColumnPadding(
+        first = ColumnItemType.ListHeader,
+    )
+
     ScreenScaffold(
         scrollState = columnState,
-        contentPadding = PaddingValues(
-            top = 28.dp, start = 10.dp, end = 10.dp, bottom = 12.dp
-        ),
+        contentPadding = contentPadding,
+        edgeButton = {
+            EdgeButton(
+                onClick = { onEvent(Event.OnNavigateTo(Routes.Settings)) }
+            ){
+                Icon(
+                    imageVector = Icons.Settings,
+                    contentDescription = "Settings"
+                )
+            }
+        }
     ) { contentPadding ->
 
         TransformingLazyColumn(
@@ -95,7 +106,8 @@ fun ContentSuccess(
                 ){
                     Text(
                         text = stringResource(R.string.home_title),
-                        color = MaterialTheme.colorScheme.primary
+                        color = MaterialTheme.colorScheme.primary,
+                        style = MaterialTheme.typography.titleLarge
                     )
                 }
             }
@@ -185,20 +197,6 @@ fun ContentSuccess(
                     }
                 }
 
-            }
-
-            item {
-                FilledIconButton(
-                    onClick = {
-                        onEvent(Event.OnNavigateTo(Routes.Settings))
-                    },
-                    modifier = Modifier.padding(top = 12.dp)
-                ) {
-                    Icon(
-                        imageVector = Icons.Settings,
-                        contentDescription = ""
-                    )
-                }
             }
 
         }

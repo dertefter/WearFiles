@@ -1,16 +1,21 @@
 package com.dertefter.wearable.images.presentation.content
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.core.net.toUri
 import androidx.wear.compose.foundation.lazy.TransformingLazyColumn
 import androidx.wear.compose.foundation.lazy.rememberTransformingLazyColumnState
 import androidx.wear.compose.material3.ListHeader
@@ -40,7 +45,7 @@ fun ContentSuccess(
 
     val contentPadding = rememberResponsiveColumnPadding(
         first = ColumnItemType.ListHeader,
-        last = ColumnItemType.Button,
+        horizontalPercent = 0.08f
     )
 
     val transformationSpec = rememberTransformationSpec()
@@ -96,10 +101,12 @@ fun ContentSuccess(
                         modifier = Modifier
                             .fillMaxWidth()
                             .transformedHeight(this, transformationSpec),
-                        transformation = SurfaceTransformation(transformationSpec)
+                        transformation = SurfaceTransformation(transformationSpec),
+                        contentPadding = PaddingValues(0.dp)
                     ) {
                         Row(
-                            modifier = Modifier.fillMaxWidth(),
+                            modifier = Modifier
+                                .padding(bottom = 8.dp),
                             horizontalArrangement = Arrangement.spacedBy(8.dp)
                         ) {
                             rowItems.forEach { item ->
@@ -110,15 +117,8 @@ fun ContentSuccess(
                                     onClick = {
                                         onEvent(Event.OnOpenFile(item.uri, item.isVideo, item.displayName))
                                     },
-                                    backgroundColor = MaterialTheme.colorScheme.background,
-                                    iconColor = MaterialTheme.colorScheme.background,
-                                    modifier = Modifier
-                                        .weight(1f)
-                                        .aspectRatio(1f)
-                                )
-                            }
-                            repeat(3 - rowItems.size) {
-                                Spacer(
+                                    backgroundColor = MaterialTheme.colorScheme.surfaceContainerLow,
+                                    iconColor = MaterialTheme.colorScheme.onSurfaceVariant,
                                     modifier = Modifier
                                         .weight(1f)
                                         .aspectRatio(1f)
@@ -141,7 +141,38 @@ fun ContentSuccess(
 @Preview(device = "id:wearos_square", showBackground = true)
 fun ContentFailedPreview(){
     ContentSuccess(
-        emptyList(),
+        listOf(
+            MediaItem(
+                id = 1,
+                uri = "".toUri(),
+                displayName = "",
+                isVideo = false
+            ),
+            MediaItem(
+                id = 1,
+                uri = "".toUri(),
+                displayName = "",
+                isVideo = false
+            ),
+            MediaItem(
+                id = 1,
+                uri = "".toUri(),
+                displayName = "",
+                isVideo = false
+            ),
+            MediaItem(
+                id = 1,
+                uri = "".toUri(),
+                displayName = "",
+                isVideo = false
+            ),
+            MediaItem(
+                id = 1,
+                uri = "".toUri(),
+                displayName = "",
+                isVideo = false
+            )
+        ),
         {  }
     )
 }
