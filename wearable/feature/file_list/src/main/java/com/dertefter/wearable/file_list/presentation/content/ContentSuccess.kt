@@ -4,7 +4,6 @@ import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -25,6 +24,7 @@ import androidx.wear.compose.foundation.lazy.TransformingLazyColumn
 import androidx.wear.compose.foundation.lazy.items
 import androidx.wear.compose.foundation.lazy.rememberTransformingLazyColumnState
 import androidx.wear.compose.material3.Button
+import androidx.wear.compose.material3.EdgeButton
 import androidx.wear.compose.material3.FilledIconButton
 import androidx.wear.compose.material3.FilledTonalIconButton
 import androidx.wear.compose.material3.Icon
@@ -35,7 +35,6 @@ import androidx.wear.compose.material3.Text
 import androidx.wear.compose.material3.lazy.rememberTransformationSpec
 import com.dertefter.wearable.data.model.PrettyPath
 import com.dertefter.wearable.design.components.common.rememberSafeRotaryScrollableBehavior
-import com.dertefter.wearable.design.components.items.BottomBarItem
 import com.dertefter.wearable.design.components.items.FileItem
 import com.dertefter.wearable.design.components.items.PathItem
 import com.dertefter.wearable.design.icons.Icons
@@ -43,6 +42,8 @@ import com.dertefter.wearable.file_list.R
 import com.dertefter.wearable.file_list.presentation.Action
 import com.dertefter.wearable.file_list.presentation.Event
 import com.dertefter.wearable.menu.MenuMode
+import com.google.android.horologist.compose.layout.ColumnItemType
+import com.google.android.horologist.compose.layout.rememberResponsiveColumnPadding
 import java.io.File
 
 @Composable
@@ -60,11 +61,32 @@ fun ContentSuccess(
     val selectedFilePaths = remember { mutableStateListOf<String>() }
 
 
+    val contentPadding = rememberResponsiveColumnPadding(
+        first = ColumnItemType.ListHeader,
+    )
+
     ScreenScaffold(
         scrollState = columnState,
-        contentPadding = PaddingValues(
-            top = 52.dp, start = 10.dp, end = 10.dp, bottom = 48.dp
-        ),
+        contentPadding = contentPadding,
+        edgeButton = {
+            if (actions.contains(Action.MORE)){
+                EdgeButton(
+                    onClick = {
+                        onEvent(
+                            Event.OnShowMenuFor(
+                                paths = listOf(path.path),
+                                menuMode = MenuMode.INSIDE
+                            )
+                        )
+                    }
+                ){
+                    Icon(
+                        imageVector = Icons.MoreHorizontal,
+                        contentDescription = null
+                    )
+                }
+            }
+        }
     ) { contentPadding ->
 
         TransformingLazyColumn(
@@ -141,32 +163,6 @@ fun ContentSuccess(
 
                 )
             }
-
-            item(key = "bottom_bar") {
-                BottomBarItem(
-                    modifier = Modifier.padding(vertical = 8.dp, horizontal = 14.dp),
-                    transformationSpec = transformationSpec,
-                    onUpClick = if (actions.contains(Action.MOVE_BACK)) {
-                        { onEvent(Event.OnNavigateBack) }
-                    } else {
-                        null
-                    },
-                    onMoreClick = if (actions.contains(Action.MORE)) {
-                        {
-                            onEvent(
-                                Event.OnShowMenuFor(
-                                    paths = listOf(path.path),
-                                    menuMode = MenuMode.INSIDE
-                                )
-                            )
-                        }
-                    } else {
-                        null
-                    }
-
-                )
-            }
-
         }
 
 
