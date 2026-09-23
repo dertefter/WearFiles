@@ -1,10 +1,8 @@
 package com.dertefter.wearable.menu.presentation.content
 
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import androidx.wear.compose.foundation.lazy.TransformingLazyColumn
 import androidx.wear.compose.foundation.lazy.items
 import androidx.wear.compose.foundation.lazy.rememberTransformingLazyColumnState
@@ -18,6 +16,8 @@ import com.dertefter.wearable.menu.R
 import com.dertefter.wearable.menu.presentation.Event
 import com.dertefter.wearable.menu.presentation.MenuAction
 import com.dertefter.wearable.menu.presentation.MenuActionType
+import com.google.android.horologist.compose.layout.ColumnItemType
+import com.google.android.horologist.compose.layout.rememberResponsiveColumnPadding
 
 @Composable
 fun ContentSuccess(
@@ -30,11 +30,13 @@ fun ContentSuccess(
 
     val transformationSpec = rememberTransformationSpec()
 
+    val contentPadding = rememberResponsiveColumnPadding(
+        first = ColumnItemType.Card,
+    )
+
     ScreenScaffold(
         scrollState = columnState,
-        contentPadding = PaddingValues(
-            top = 72.dp, start = 10.dp, end = 10.dp, bottom = 72.dp
-        )
+        contentPadding = contentPadding
     )
     { contentPadding ->
 
