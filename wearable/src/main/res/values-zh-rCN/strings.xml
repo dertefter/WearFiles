@@ -4,4 +4,7 @@
     <string name="launch_image_viewer">打开图片</string>
     <string name="launch_pdf_viewer">打开PDF文件</string>
     <string name="error_no_app">没有应用程序可以打开文件</string>
+    <string name="notification_channel_name">文件传输</string>
+    <string name="notification_receiving_title">正在接收文件</string>
+    <string name="notification_receiving_desc">%1$s (%2$d%%)</string>
 </resources>

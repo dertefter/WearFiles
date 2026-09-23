@@ -1,14 +1,22 @@
 package com.dertefter.wearable.home.presentation
 
+import android.Manifest
+import android.content.pm.PackageManager
+import android.os.Build
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.core.content.ContextCompat
 import androidx.wear.compose.foundation.lazy.TransformingLazyColumn
 import androidx.wear.compose.foundation.lazy.rememberTransformingLazyColumnState
 import androidx.wear.compose.material3.FilledIconButton
@@ -33,11 +41,32 @@ import com.dertefter.wearable.navigation.Routes
 import java.io.File
 
 @Composable
+private fun NotificationPermissionRequest() {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+        val context = LocalContext.current
+        val launcher = rememberLauncherForActivityResult(
+            contract = ActivityResultContracts.RequestPermission()
+        ) { _ -> }
+
+        LaunchedEffect(Unit) {
+            if (ContextCompat.checkSelfPermission(
+                    context,
+                    Manifest.permission.POST_NOTIFICATIONS
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                launcher.launch(Manifest.permission.POST_NOTIFICATIONS)
+            }
+        }
+    }
+}
+
+@Composable
 fun ContentSuccess(
     homeItems: List<HomeItem>,
     pinnedItems: List<PinnedItem>,
     onEvent: (Event) -> Unit,
 ) {
+    NotificationPermissionRequest()
 
     val columnState = rememberTransformingLazyColumnState()
 
@@ -46,7 +75,7 @@ fun ContentSuccess(
     ScreenScaffold(
         scrollState = columnState,
         contentPadding = PaddingValues(
-            top = 52.dp, start = 10.dp, end = 10.dp, bottom = 72.dp
+            top = 28.dp, start = 10.dp, end = 10.dp, bottom = 12.dp
         ),
     ) { contentPadding ->
 
@@ -179,7 +208,7 @@ fun ContentSuccess(
 }
 
 @Composable
-@Preview(device = "id:wearos_square", showBackground = true)
+@Preview(device = "id:wearos_small_round", showBackground = false)
 fun ContentFailedPreview() {
     ContentSuccess(
         emptyList(),emptyList(),{}

@@ -6,6 +6,7 @@ import android.content.pm.ServiceInfo
 import android.net.Uri
 import android.os.Build
 import android.os.IBinder
+import android.os.PowerManager
 import android.util.Log
 import com.dertefter.wearfiles.data.TransferItem
 import com.dertefter.wearfiles.data.TransferRepository
@@ -93,6 +94,17 @@ class FileTransferService : Service() {
     private suspend fun processItem(item: TransferItem) {
         if (TransferRepository.queue.none { it.id == item.id }) return
 
+        val powerManager = getSystemService(POWER_SERVICE) as PowerManager
+        val wakeLock = powerManager.newWakeLock(
+            PowerManager.PARTIAL_WAKE_LOCK,
+            "WearFiles:FileTransferWakeLock"
+        )
+        try {
+            wakeLock.acquire(15 * 60 * 1000L)
+        } catch (e: Exception) {
+            Log.w("FileTransferService", "Failed to acquire wake lock: ${e.message}")
+        }
+
         TransferRepository.updateItem(item.id) { it.copy(status = TransferStatus.SENDING) }
         
         val nodeId = item.targetNodeId
@@ -146,6 +158,13 @@ class FileTransferService : Service() {
             TransferRepository.updateItem(item.id) { it.copy(progress = 100) }
 
         } finally {
+            if (wakeLock.isHeld) {
+                try {
+                    wakeLock.release()
+                } catch (e: Exception) {
+                    Log.w("FileTransferService", "Error releasing wake lock: ${e.message}")
+                }
+            }
             try {
                 channelClient.close(channel).await()
             } catch (e: Exception) {

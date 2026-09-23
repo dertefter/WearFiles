@@ -5,4 +5,7 @@
     <string name="launch_image_viewer">Open picture</string>
     <string name="launch_pdf_viewer">Open PDF file</string>
     <string name="error_no_app">No app to open file</string>
+    <string name="notification_channel_name">File Transfer</string>
+    <string name="notification_receiving_title">Receiving file</string>
+    <string name="notification_receiving_desc">%1$s (%2$d%%)</string>
 </resources>

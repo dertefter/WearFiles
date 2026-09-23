@@ -6,6 +6,10 @@
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
 
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <uses-permission
@@ -135,7 +139,8 @@
 
         <service
             android:name=".FileReceiverService"
-            android:exported="true">
+            android:exported="true"
+            android:foregroundServiceType="dataSync">
             <intent-filter>
                 <action android:name="com.google.android.gms.wearable.DATA_CHANGED" />
                 <action android:name="com.google.android.gms.wearable.MESSAGE_RECEIVED" />
