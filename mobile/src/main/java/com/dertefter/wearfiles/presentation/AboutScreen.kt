@@ -56,7 +56,7 @@ fun AboutScreen(
             text = stringResource(R.string.about_telegram_chat),
             icon = painterResource(R.drawable.ic_tg),
             onClick = {
-                val intent = Intent(Intent.ACTION_VIEW, "https://t.me/+kkfSol74PUc3Mzcy".toUri())
+                val intent = Intent(Intent.ACTION_VIEW, "https://t.me/wearfiles_app".toUri())
                 context.startActivity(intent)
             }
         ),
