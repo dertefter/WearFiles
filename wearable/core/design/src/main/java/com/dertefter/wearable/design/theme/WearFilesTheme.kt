@@ -7,7 +7,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.wear.compose.material3.ColorScheme
 import androidx.wear.compose.material3.MaterialTheme
-import androidx.wear.compose.material3.Typography
+import androidx.wear.compose.material3.MotionScheme
 import com.materialkolor.PaletteStyle
 import com.materialkolor.dynamiccolor.ColorSpec
 import com.materialkolor.rememberDynamicColorScheme
@@ -37,8 +37,8 @@ fun WearFilesTheme(
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography(),
         content = content,
+        motionScheme = MotionScheme.expressive()
     )
 }
 
