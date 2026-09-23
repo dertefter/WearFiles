@@ -1,6 +1,9 @@
 package com.dertefter.wearfiles.presentation
 
+import android.content.ActivityNotFoundException
+import android.content.Context
 import android.content.Intent
+import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
@@ -36,6 +39,18 @@ data class AboutItem(
 
 )
 
+private fun openIntentSafely(context: Context, intent: Intent) {
+    try {
+        context.startActivity(intent)
+    } catch (_: ActivityNotFoundException) {
+        Toast.makeText(
+            context,
+            context.getString(R.string.error_no_app_to_open_link),
+            Toast.LENGTH_SHORT
+        ).show()
+    }
+}
+
 @Composable
 fun AboutScreen(
     modifier: Modifier = Modifier,
@@ -49,7 +64,7 @@ fun AboutScreen(
             text = stringResource(R.string.about_oss_licenses),
             icon = painterResource(R.drawable.ic_article),
             onClick = {
-                context.startActivity(OssLicensesActivity.createIntent(context))
+                openIntentSafely(context, OssLicensesActivity.createIntent(context))
             }
         ),
         AboutItem(
@@ -57,7 +72,7 @@ fun AboutScreen(
             icon = painterResource(R.drawable.ic_tg),
             onClick = {
                 val intent = Intent(Intent.ACTION_VIEW, "https://t.me/wearfiles_app".toUri())
-                context.startActivity(intent)
+                openIntentSafely(context, intent)
             }
         ),
         AboutItem(
@@ -66,7 +81,7 @@ fun AboutScreen(
             onClick = {
                 val intent = Intent(Intent.ACTION_VIEW,
                     "https://github.com/dertefter/WearFiles".toUri())
-                context.startActivity(intent)
+                openIntentSafely(context, intent)
             }
         ),
         AboutItem(
@@ -75,7 +90,7 @@ fun AboutScreen(
             onClick = {
                 val intent = Intent(Intent.ACTION_VIEW,
                     "https://www.donationalerts.com/r/dertefter".toUri())
-                context.startActivity(intent)
+                openIntentSafely(context, intent)
             }
         )
     )

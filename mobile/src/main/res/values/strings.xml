@@ -38,6 +38,7 @@
     <string name="about_telegram_chat">Telegram Chat</string>
     <string name="about_github">GitHub</string>
     <string name="about_donate">Support Me</string>
+    <string name="error_no_app_to_open_link">No app found to open link</string>
     <string name="back_content_description">Back</string>
     <string name="menu_content_description">Menu</string>
 </resources>
