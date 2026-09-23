@@ -5,14 +5,21 @@ import android.webkit.MimeTypeMap
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Icon
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.runtime.*
+import androidx.wear.compose.material3.Icon
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
@@ -20,7 +27,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.wear.compose.material3.MaterialTheme
 import coil.ImageLoader
 import coil.compose.AsyncImage
 import coil.compose.AsyncImagePainter
@@ -28,6 +37,7 @@ import coil.decode.VideoFrameDecoder
 import coil.request.ImageRequest
 import coil.request.videoFrameMillis
 import com.dertefter.wearable.design.icons.Icons
+import com.dertefter.wearable.design.theme.WearFilesTheme
 import java.io.File
 
 @Composable
@@ -37,7 +47,7 @@ fun CircleThumb(
     file: File? = null,
     contentDescription: String? = null,
     onClick: () -> Unit = {},
-    backgroundColor: Color = MaterialTheme.colorScheme.surfaceVariant,
+    backgroundColor: Color = MaterialTheme.colorScheme.surfaceContainer,
     iconColor: Color = MaterialTheme.colorScheme.onSurfaceVariant,
     icon: ImageVector? = null,
     shape: RoundedCornerShape = CircleShape,
@@ -55,6 +65,8 @@ fun CircleThumb(
         modifier = modifier
             .clip(shape)
             .clickable(onClick = onClick)
+            .background(backgroundColor),
+        contentAlignment = Alignment.Center
     ) {
 
         val resolvedIcon = icon ?: file?.resolveIcon()
@@ -63,10 +75,7 @@ fun CircleThumb(
             Icon(
                 contentDescription = null,
                 imageVector = resolvedIcon ?: Icons.Draft,
-                modifier = Modifier
-                    .fillMaxSize()
-                    .background(backgroundColor)
-                    .padding(6.dp),
+                modifier = Modifier,
                 tint = iconColor
             )
         }
@@ -115,6 +124,7 @@ fun CircleThumb(
             modifier = Modifier
                 .alpha(animatedSelectedAlpha)
                 .background(MaterialTheme.colorScheme.primary)
+                .padding(8.dp)
                 .fillMaxSize(),
             tint = MaterialTheme.colorScheme.onPrimary,
             contentDescription = null
@@ -139,5 +149,35 @@ fun File.resolveIcon(): ImageVector {
         mime.endsWith("vnd.android.package-archive") -> Icons.Apk
         mime.startsWith("text/") || mime.endsWith("json") || mime.endsWith("xml") || mime.endsWith("csv") -> Icons.Docs
         else -> Icons.Draft
+    }
+}
+
+@Preview(device = "id:wearos_small_round", showBackground = true)
+@Composable
+private fun CircleThumbPreview() {
+    WearFilesTheme(
+        seedColor = Color.Green
+    ) {
+        Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center
+        ) {
+            Row(
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                CircleThumb(
+                    uri = null,
+                    modifier = Modifier.size(48.dp),
+                    icon = Icons.Folder
+                )
+                CircleThumb(
+                    uri = null,
+                    modifier = Modifier.size(48.dp),
+                    icon = Icons.Image,
+                    isSelected = true
+                )
+            }
+        }
     }
 }
