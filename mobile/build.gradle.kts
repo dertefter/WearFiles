@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId = "com.dertefter.wearfiles"
-        minSdk = 28
+        minSdk = 30
         targetSdk = 37
         versionCode = project.property("appVersionCode").toString().toInt()
         versionName = project.property("appVersionName").toString()
