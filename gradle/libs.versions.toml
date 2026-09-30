@@ -13,18 +13,18 @@ ksp = "2.3.12"
 ossLicensesPlugin = "0.13.0"
 droibitOssLicenses = "0.10.0"
 # Compose
-composeBom = "2026.09.00"
+composeBom = "2026.09.01"
 activityCompose = "1.13.0"
 kotlinxCoroutinesAndroid = "1.11.0"
 kotlinxCoroutinesCore = "1.11.0"
 materialKolor = "5.0.1"
 markdownCompose = "1.0.4"
-navigationCompose = "2.10.1"
+navigationCompose = "2.10.2"
 
 # Wear Compose
 
-wearCompose = "1.6.2"
-wearComposeNavigation = "1.6.2"
+wearCompose = "1.7.0"
+wearComposeNavigation = "1.7.0"
 wearRemoteInteractions = "1.2.0"
 
 # Hilt
@@ -36,9 +36,9 @@ horologist = "0.7.15"
 
 # Other
 kotlinxSerializationJson = "1.11.0"
-zoomable = "2.13.0"
+zoomable = "2.14.0"
 material3 = "1.4.0"
-coreKtx = "1.19.0"
+coreKtx = "1.19.1"
 lifecycleRuntimeKtx = "2.11.0"
 playServicesWearable = "20.0.1"
 
