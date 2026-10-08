@@ -70,7 +70,7 @@ If you decide that you need full access to files, you can grant permission using
 
 ## Star History
 
-<a href="https://star-history.dera.page/#dertefter/WearFiles">
+<a href="https://star-history.dera.page/dertefter/WearFiles">
  <picture>
    <source media="(prefers-color-scheme: dark)" srcset="https://star-history.dera.page/svg?repos=dertefter/WearFiles&theme=dark" />
    <source media="(prefers-color-scheme: light)" srcset="https://star-history.dera.page/svg?repos=dertefter/WearFiles" />
