@@ -6,6 +6,7 @@ import android.app.NotificationManager
 import android.content.Intent
 import android.content.pm.ServiceInfo
 import android.net.Uri
+import android.net.wifi.WifiManager
 import android.os.Build
 import android.os.Environment
 import android.os.PowerManager
@@ -183,6 +184,20 @@ class FileReceiverService : WearableListenerService() {
             Log.w(TAG, "Failed to acquire wake lock: ${e.message}", e)
         }
 
+        val wifiManager = applicationContext.getSystemService(WIFI_SERVICE) as WifiManager
+        @Suppress("DEPRECATION")
+        val wifiLock = wifiManager.createWifiLock(
+            WifiManager.WIFI_MODE_FULL_HIGH_PERF,
+            "WearFiles:FileReceiverWifiLock"
+        ).apply {
+            setReferenceCounted(false)
+        }
+        try {
+            wifiLock.acquire()
+        } catch (e: Exception) {
+            Log.w("FileReceiverService", "Failed to acquire wifi lock: ${e.message}")
+        }
+
         val channelClient = Wearable.getChannelClient(this)
         val receivedDir = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "Received")
 
@@ -273,6 +288,14 @@ class FileReceiverService : WearableListenerService() {
                 Log.w(TAG, "Failed to send error status to node $nodeId: ${sendException.message}", sendException)
             }
         } finally {
+            if (wifiLock.isHeld) {
+                try {
+                    wifiLock.release()
+                } catch (e: Exception) {
+                    Log.w("FileReceiverService", "Failed to release wifi lock: ${e.message}")
+                }
+            }
+
             if (wakeLock.isHeld) {
                 try {
                     wakeLock.release()
