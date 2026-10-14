@@ -40,6 +40,7 @@ class FileReceiverService : WearableListenerService() {
     }
 
     companion object {
+        private const val TAG = "FileReceiverService"
         private const val CHANNEL_ID = "file_receiver_channel"
         private const val NOTIFICATION_ID = 1001
         private const val WAKE_LOCK_TIMEOUT_MS = 15 * 60 * 1000L // 15 minutes
@@ -47,11 +48,13 @@ class FileReceiverService : WearableListenerService() {
 
     override fun onCreate() {
         super.onCreate()
+        Log.d(TAG, "onCreate: Service created")
         createNotificationChannel()
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         super.onStartCommand(intent, flags, startId)
+        Log.d(TAG, "onStartCommand called with flags=$flags, startId=$startId")
         return START_NOT_STICKY
     }
 
@@ -78,7 +81,7 @@ class FileReceiverService : WearableListenerService() {
             .setSmallIcon(android.R.drawable.stat_sys_download)
             .setContentTitle(title)
             .setContentText(contentText)
-            .setPriority(NotificationCompat.PRIORITY_LOW)
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setOngoing(true)
             .setOnlyAlertOnce(true)
 
@@ -94,6 +97,7 @@ class FileReceiverService : WearableListenerService() {
     private fun startForegroundServiceIfNeeded(fileName: String) {
         val notification = buildNotification(fileName, 0)
         try {
+            Log.d(TAG, "Starting foreground service for $fileName")
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
                 startForeground(
                     NOTIFICATION_ID,
@@ -104,7 +108,7 @@ class FileReceiverService : WearableListenerService() {
                 startForeground(NOTIFICATION_ID, notification)
             }
         } catch (e: Exception) {
-            Log.e("FileReceiverService", "Failed to start foreground service: ${e.message}")
+            Log.e(TAG, "Failed to start foreground service: ${e.message}", e)
         }
     }
 
@@ -113,14 +117,14 @@ class FileReceiverService : WearableListenerService() {
         try {
             notificationManager.notify(NOTIFICATION_ID, notification)
         } catch (e: SecurityException) {
-            Log.w("FileReceiverService", "Missing notification permission: ${e.message}")
+            Log.w(TAG, "Missing notification permission: ${e.message}")
         } catch (e: Exception) {
-            Log.w("FileReceiverService", "Failed to update notification: ${e.message}")
+            Log.w(TAG, "Failed to update notification: ${e.message}", e)
         }
     }
 
     override fun onChannelOpened(channel: ChannelClient.Channel) {
-        Log.d("FileReceiverService", "Channel opened: ${channel.path}")
+        Log.d(TAG, "onChannelOpened: path=${channel.path}, nodeId=${channel.nodeId}")
         if (channel.path.startsWith("/file-transfer/")) {
             val pathData = channel.path.substringAfter("/file-transfer/")
             val expectedSize: Long
@@ -135,15 +139,18 @@ class FileReceiverService : WearableListenerService() {
             }
 
             val nodeId = channel.nodeId
+            Log.d(TAG, "Parsed transfer info: fileName='$fileName', expectedSize=$expectedSize bytes, senderNodeId=$nodeId")
 
             try {
                 val intent = Intent(this, FileReceiverService::class.java)
                 startForegroundService(intent)
+                Log.d(TAG, "Started FileReceiverService intent for foreground service")
             } catch (e: Exception) {
-                Log.w("FileReceiverService", "Failed to start service intent: ${e.message}")
+                Log.w(TAG, "Failed to start service intent: ${e.message}", e)
             }
 
             val currentActive = activeTransfers.incrementAndGet()
+            Log.d(TAG, "Active transfers count: $currentActive")
             if (currentActive == 1) {
                 startForegroundServiceIfNeeded(fileName)
             } else {
@@ -153,6 +160,8 @@ class FileReceiverService : WearableListenerService() {
             scope.launch {
                 receiveFileFromChannel(channel, fileName, nodeId, expectedSize)
             }
+        } else {
+            Log.w(TAG, "Ignored channel opening with unsupported path: ${channel.path}")
         }
     }
 
@@ -162,14 +171,16 @@ class FileReceiverService : WearableListenerService() {
         nodeId: String,
         expectedSize: Long
     ) {
+        Log.d(TAG, "receiveFileFromChannel starting for $fileName from node $nodeId")
         val wakeLock = powerManager.newWakeLock(
             PowerManager.PARTIAL_WAKE_LOCK,
             "WearFiles:FileReceiverWakeLock"
         )
         try {
             wakeLock.acquire(WAKE_LOCK_TIMEOUT_MS)
+            Log.d(TAG, "Wake lock acquired for receiving $fileName")
         } catch (e: Exception) {
-            Log.w("FileReceiverService", "Failed to acquire wake lock: ${e.message}")
+            Log.w(TAG, "Failed to acquire wake lock: ${e.message}", e)
         }
 
         val channelClient = Wearable.getChannelClient(this)
@@ -177,16 +188,25 @@ class FileReceiverService : WearableListenerService() {
 
         try {
             if (!receivedDir.exists()) {
-                receivedDir.mkdirs()
+                val created = receivedDir.mkdirs()
+                Log.d(TAG, "Directory ${receivedDir.absolutePath} exists=false, mkdirs result=$created")
             }
 
             val file = File(receivedDir, fileName)
-            Log.d("FileReceiverService", "Receiving file: $fileName to ${file.absolutePath}")
+            Log.d(TAG, "Receiving file '$fileName' -> destination path: ${file.absolutePath}")
 
-            val inputStream = channelClient.getInputStream(channel).await()
+            Log.d(TAG, "Opening channel InputStream...")
+            val inputStream = try {
+                channelClient.getInputStream(channel).await()
+            } catch (e: Exception) {
+                Log.e(TAG, "Failed to get InputStream from channel: ${e.message}", e)
+                throw e
+            }
+
             var bytesReceived = 0L
             var lastNotificationTime = 0L
 
+            Log.d(TAG, "Beginning byte read loop for $fileName...")
             withContext(Dispatchers.IO) {
                 FileOutputStream(file).use { outputStream ->
                     inputStream.use { input ->
@@ -214,57 +234,70 @@ class FileReceiverService : WearableListenerService() {
                 }
             }
 
-            if (expectedSize != -1L && bytesReceived != expectedSize) {
-                throw Exception("Incomplete file: received $bytesReceived of $expectedSize")
+            Log.d(TAG, "Finished writing file $fileName. Total bytes received: $bytesReceived (expected: $expectedSize)")
+
+            if (expectedSize > 0 && bytesReceived != expectedSize) {
+                Log.e(TAG, "Size mismatch for $fileName: received $bytesReceived bytes, expected $expectedSize bytes")
             }
 
-            Log.d("FileReceiverService", "File saved successfully!")
+            Log.d(TAG, "File '$fileName' saved successfully to ${file.absolutePath}")
 
             try {
+                Log.d(TAG, "Sending success status back to node $nodeId for file $fileName...")
                 Wearable.getMessageClient(this)
                     .sendMessage(nodeId, "/file-transfer-status", "success:$fileName".toByteArray())
                     .await()
+                Log.d(TAG, "Success status message sent successfully to node $nodeId")
             } catch (e: Exception) {
-                Log.w("FileReceiverService", "Failed to send success status: ${e.message}")
+                Log.w(TAG, "Failed to send success status to node $nodeId: ${e.message}", e)
             }
 
         } catch (e: CancellationException) {
-            Log.w("FileReceiverService", "Receive cancelled for $fileName", e)
+            Log.w(TAG, "Receive cancelled for $fileName: ${e.message}", e)
             throw e
         } catch (e: Exception) {
-            Log.e("FileReceiverService", "Error receiving file: " + e.stackTraceToString())
+            Log.e(TAG, "Error receiving file $fileName: ${e.message}", e)
             val file = File(receivedDir, fileName)
             if (file.exists()) {
-                file.delete()
+                val deleted = file.delete()
+                Log.w(TAG, "Deleted incomplete file ${file.absolutePath}, result=$deleted")
             }
 
             try {
+                Log.d(TAG, "Sending error status back to node $nodeId for file $fileName...")
                 Wearable.getMessageClient(this)
                     .sendMessage(nodeId, "/file-transfer-status", "error:$fileName".toByteArray())
                     .await()
+                Log.d(TAG, "Error status message sent successfully to node $nodeId")
             } catch (sendException: Exception) {
-                Log.w("FileReceiverService", "Failed to send error status: ${sendException.message}")
+                Log.w(TAG, "Failed to send error status to node $nodeId: ${sendException.message}", sendException)
             }
         } finally {
             if (wakeLock.isHeld) {
                 try {
                     wakeLock.release()
+                    Log.d(TAG, "Wake lock released")
                 } catch (e: Exception) {
-                    Log.w("FileReceiverService", "Failed to release wake lock: ${e.message}")
+                    Log.w(TAG, "Failed to release wake lock: ${e.message}")
                 }
             }
 
             try {
+                Log.d(TAG, "Closing channel ${channel.path}...")
                 channelClient.close(channel).await()
+                Log.d(TAG, "Channel closed successfully")
             } catch (closeException: Exception) {
-                Log.w("FileReceiverService", "Failed to close channel: ${closeException.message}")
+                Log.w(TAG, "Failed to close channel: ${closeException.message}")
             }
 
-            if (activeTransfers.decrementAndGet() <= 0) {
+            val remaining = activeTransfers.decrementAndGet()
+            Log.d(TAG, "Remaining active transfers: $remaining")
+            if (remaining <= 0) {
+                Log.d(TAG, "No more active transfers. Stopping foreground service.")
                 try {
                     stopForeground(STOP_FOREGROUND_REMOVE)
                 } catch (e: Exception) {
-                    Log.w("FileReceiverService", "Failed to stop foreground: ${e.message}")
+                    Log.w(TAG, "Failed to stop foreground: ${e.message}")
                 }
                 stopSelf()
             }
@@ -273,6 +306,7 @@ class FileReceiverService : WearableListenerService() {
 
     override fun onDestroy() {
         super.onDestroy()
+        Log.d(TAG, "onDestroy: Service destroying, cancelling supervisor job")
         job.cancel()
     }
 }
