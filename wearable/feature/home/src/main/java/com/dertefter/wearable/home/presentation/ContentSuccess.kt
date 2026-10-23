@@ -155,7 +155,8 @@ fun ContentSuccess(
                 }
             }
 
-            if (pinnedItems.isNotEmpty()){
+            val validPinnedItems = pinnedItems.filter { (it.path as String?).isNullOrEmpty().not() }
+            if (validPinnedItems.isNotEmpty()){
                 item {
                     ListSubHeader(
                         modifier = Modifier
@@ -172,7 +173,7 @@ fun ContentSuccess(
                     }
                 }
 
-                for ((name, path, isFile) in pinnedItems) {
+                for ((name, path, isFile) in validPinnedItems) {
 
                     item {
 

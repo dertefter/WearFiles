@@ -73,7 +73,8 @@ class PinnedRepositoryImpl @Inject constructor(
 
         return try {
             val type = object : TypeToken<List<PinnedItem>>() {}.type
-            gson.fromJson(json, type)
+            val items: List<PinnedItem>? = gson.fromJson(json, type)
+            items?.filter { (it.path as String?).isNullOrEmpty().not() } ?: emptyList()
         } catch (e: Exception) {
             emptyList()
         }
