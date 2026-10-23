@@ -41,15 +41,17 @@ class PinnedRepositoryImpl @Inject constructor(
     }
 
     override suspend fun isPinned(path: String): Boolean {
-        return getPinnedItems()
-            .any { it.path == path }
+        return getPinnedItems().any { ((it.path as Any?) as? String) == path }
     }
 
     override suspend fun pinItem(item: PinnedItem) {
+        val itemPath = (item.path as Any?) as? String
+        if (itemPath.isNullOrEmpty()) return
+
         dataStore.edit { prefs ->
             val current = decode(prefs[PinnedKeys.PINNED_ITEMS]).toMutableList()
 
-            if (current.none { it.path == item.path }) {
+            if (current.none { ((it.path as Any?) as? String) == itemPath }) {
                 current.add(item)
                 prefs[PinnedKeys.PINNED_ITEMS] = encode(current)
             }
@@ -57,9 +59,12 @@ class PinnedRepositoryImpl @Inject constructor(
     }
 
     override suspend fun unpinItem(item: PinnedItem) {
+        val itemPath = (item.path as Any?) as? String
+        if (itemPath.isNullOrEmpty()) return
+
         dataStore.edit { prefs ->
             val current = decode(prefs[PinnedKeys.PINNED_ITEMS])
-                .filterNot { it.path == item.path }
+                .filterNot { ((it.path as Any?) as? String) == itemPath }
 
             prefs[PinnedKeys.PINNED_ITEMS] = encode(current)
         }
@@ -72,10 +77,14 @@ class PinnedRepositoryImpl @Inject constructor(
         if (json.isNullOrEmpty()) return emptyList()
 
         return try {
-            val type = object : TypeToken<List<PinnedItem>>() {}.type
-            val items: List<PinnedItem>? = gson.fromJson(json, type)
-            items?.filter { (it.path as String?).isNullOrEmpty().not() } ?: emptyList()
-        } catch (e: Exception) {
+            val type = object : TypeToken<List<PinnedItem?>>() {}.type
+            val items: List<PinnedItem?>? = gson.fromJson(json, type)
+            items?.filterNotNull()?.filter { item ->
+                val itemPath = (item.path as Any?) as? String
+                val itemName = (item.name as Any?) as? String
+                return@filter !itemPath.isNullOrEmpty() && !itemName.isNullOrEmpty()
+            } ?: emptyList()
+        } catch (_: Exception) {
             emptyList()
         }
     }
