@@ -95,7 +95,7 @@ class FileReceiverService : WearableListenerService() {
         return builder.build()
     }
 
-    private fun startForegroundServiceIfNeeded(fileName: String) {
+    private fun startForegroundIfNeeded(fileName: String) {
         val notification = buildNotification(fileName, 0)
         try {
             Log.d(TAG, "Starting foreground service for $fileName")
@@ -142,18 +142,10 @@ class FileReceiverService : WearableListenerService() {
             val nodeId = channel.nodeId
             Log.d(TAG, "Parsed transfer info: fileName='$fileName', expectedSize=$expectedSize bytes, senderNodeId=$nodeId")
 
-            try {
-                val intent = Intent(this, FileReceiverService::class.java)
-                startForegroundService(intent)
-                Log.d(TAG, "Started FileReceiverService intent for foreground service")
-            } catch (e: Exception) {
-                Log.w(TAG, "Failed to start service intent: ${e.message}", e)
-            }
-
             val currentActive = activeTransfers.incrementAndGet()
             Log.d(TAG, "Active transfers count: $currentActive")
             if (currentActive == 1) {
-                startForegroundServiceIfNeeded(fileName)
+                startForegroundIfNeeded(fileName)
             } else {
                 updateProgressNotification(fileName, 0)
             }
@@ -195,7 +187,7 @@ class FileReceiverService : WearableListenerService() {
         try {
             wifiLock.acquire()
         } catch (e: Exception) {
-            Log.w("FileReceiverService", "Failed to acquire wifi lock: ${e.message}")
+            Log.w(TAG, "Failed to acquire wifi lock: ${e.message}")
         }
 
         val channelClient = Wearable.getChannelClient(this)
@@ -292,7 +284,7 @@ class FileReceiverService : WearableListenerService() {
                 try {
                     wifiLock.release()
                 } catch (e: Exception) {
-                    Log.w("FileReceiverService", "Failed to release wifi lock: ${e.message}")
+                    Log.w(TAG, "Failed to release wifi lock: ${e.message}")
                 }
             }
 
