@@ -112,11 +112,11 @@ fun ContentSuccess(
                 }
             }
 
-            for (item in homeItems) {
+            for ((type1, routes) in homeItems) {
 
                 item {
 
-                    val title = when (item.type){
+                    val title = when (type1){
                         HomeItemType.AUDIO -> stringResource(R.string.music)
                         HomeItemType.IMAGES -> stringResource(R.string.photo)
                         HomeItemType.VIDEOS -> stringResource(R.string.video)
@@ -126,7 +126,7 @@ fun ContentSuccess(
 
                     }
 
-                    val icon = when (item.type){
+                    val icon = when (type1){
                         HomeItemType.IMAGES -> Icons.Wallpaper
                         HomeItemType.VIDEOS -> Icons.Video
                         HomeItemType.AUDIO -> Icons.Music
@@ -135,7 +135,7 @@ fun ContentSuccess(
                         HomeItemType.RECEIVED -> Icons.DevicesWearables
                     }
 
-                    val type = if (item.type == HomeItemType.STORAGE) {
+                    val type = if (type1 == HomeItemType.STORAGE) {
                         FileItemType.PRIMARY
                     } else {
                         FileItemType.DEFAULT
@@ -146,7 +146,7 @@ fun ContentSuccess(
                         text = title,
                         icon = icon,
                         onClick = {
-                            onEvent(Event.OnNavigateTo(item.routes))
+                            onEvent(Event.OnNavigateTo(routes))
                         },
                         onLongClick = {},
                         type = type
@@ -172,24 +172,24 @@ fun ContentSuccess(
                     }
                 }
 
-                for (item in pinnedItems) {
+                for ((name, path, isFile) in pinnedItems) {
 
                     item {
 
                         FileItem(
                             transformationSpec,
-                            text = item.name,
-                            thumbnailUrl = item.path,
-                            file = File(item.path),
+                            text = name,
+                            thumbnailUrl = path,
+                            file = File(path),
                             onClick = {
-                                if (item.isFile) {
-                                    onEvent(Event.OnFileClick(item.path))
+                                if (isFile) {
+                                    onEvent(Event.OnFileClick(path))
                                 }  else {
-                                    onEvent(Event.OnDirectoryClick(item.path))
+                                    onEvent(Event.OnDirectoryClick(path))
                                 }
                             },
                             onLongClick = {
-                                onEvent(Event.OnShowMenuFor(listOf(item.path)))
+                                onEvent(Event.OnShowMenuFor(listOf(path)))
                             },
                             type = FileItemType.DEFAULT
 
@@ -209,6 +209,6 @@ fun ContentSuccess(
 @Preview(device = "id:wearos_small_round", showBackground = false)
 fun ContentFailedPreview() {
     ContentSuccess(
-        emptyList(),emptyList(),{}
-    )
+        emptyList(),emptyList()
+    ) {}
 }
