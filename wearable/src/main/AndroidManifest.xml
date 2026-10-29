@@ -139,8 +139,7 @@
 
         <service
             android:name=".FileReceiverService"
-            android:exported="true"
-            android:foregroundServiceType="dataSync">
+            android:exported="true">
             <intent-filter>
                 <action android:name="com.google.android.gms.wearable.DATA_CHANGED" />
                 <action android:name="com.google.android.gms.wearable.MESSAGE_RECEIVED" />
@@ -158,6 +157,11 @@
                     android:scheme="wear" />
             </intent-filter>
         </service>
+
+        <service
+            android:name=".FileReceiveService"
+            android:exported="false"
+            android:foregroundServiceType="dataSync" />
 
     </application>
 
