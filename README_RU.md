@@ -66,7 +66,7 @@
 ### FAQ [ТУТ](FAQ_RU.md)
 
 ### 💎 Поддержать меня:
-[https://www.donationalerts.com/r/dertefter](https://www.donationalerts.com/r/dertefter)
+[https://dalink.to/dertefter](https://dalink.to/dertefter)
 
 ### Звёздочки
 

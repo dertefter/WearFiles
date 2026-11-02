@@ -66,7 +66,7 @@ If you decide that you need full access to files, you can grant permission using
 ### FAQ [HERE](FAQ.md)
 
 ### 💎 Support me:
-[https://www.donationalerts.com/r/dertefter](https://www.donationalerts.com/r/dertefter)
+[https://dalink.to/dertefter](https://dalink.to/dertefter)
 
 ## Star History
 
