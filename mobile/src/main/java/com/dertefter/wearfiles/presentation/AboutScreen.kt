@@ -89,7 +89,7 @@ fun AboutScreen(
             icon = painterResource(R.drawable.ic_attach_money),
             onClick = {
                 val intent = Intent(Intent.ACTION_VIEW,
-                    "https://www.donationalerts.com/r/dertefter".toUri())
+                    "https://dalink.to/dertefter".toUri())
                 openIntentSafely(context, intent)
             }
         )
