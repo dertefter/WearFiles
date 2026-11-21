@@ -70,10 +70,10 @@
 
 ### Звёздочки
 
-<a href="https://star-history.dera.page/#dertefter/WearFiles">
+<a href="https://www.star-history.com/?repos=dertefter%2Fwearfiles&type=date&releases=&legend=bottom-right">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://star-history.dera.page/svg?repos=dertefter/WearFiles&theme=dark" />
-   <source media="(prefers-color-scheme: light)" srcset="https://star-history.dera.page/svg?repos=dertefter/WearFiles" />
-   <img alt="Star History Chart" src="https://star-history.dera.page/svg?repos=dertefter/WearFiles" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=dertefter/wearfiles&type=date&theme=dark&legend=bottom-right" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=dertefter/wearfiles&type=date&legend=bottom-right" />
+   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=dertefter/wearfiles&type=date&legend=bottom-right" />
  </picture>
 </a>
