@@ -1,13 +1,18 @@
 package com.dertefter.wearfiles.data
 
+import android.content.Context
+import android.media.MediaScannerConnection
 import com.dertefter.wearable.data.repository.ClipboardOperation
 import com.dertefter.wearable.data.repository.ClipboardRepository
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.File
 import javax.inject.Inject
 
-class ClipboardRepositoryImpl @Inject constructor() : ClipboardRepository {
+class ClipboardRepositoryImpl @Inject constructor(
+    @param:ApplicationContext private val context: Context
+) : ClipboardRepository {
 
     private var clipboard: List<String>? = null
 
@@ -49,7 +54,9 @@ class ClipboardRepositoryImpl @Inject constructor() : ClipboardRepository {
 
                     when (operation) {
                         ClipboardOperation.COPY -> {
-                            if (!srcFile.copyRecursively(target, overwrite = false)) {
+                            if (srcFile.copyRecursively(target, overwrite = false)) {
+                                MediaScannerConnection.scanFile(context, arrayOf(target.absolutePath), null, null)
+                            } else {
                                 allSucceeded = false
                             }
                         }
@@ -63,7 +70,11 @@ class ClipboardRepositoryImpl @Inject constructor() : ClipboardRepository {
                                     false
                                 }
                             }
-                            if (!moved) allSucceeded = false
+                            if (moved) {
+                                MediaScannerConnection.scanFile(context, arrayOf(srcPath, target.absolutePath), null, null)
+                            } else {
+                                allSucceeded = false
+                            }
                         }
                         else -> {
                             allSucceeded = false
@@ -75,7 +86,7 @@ class ClipboardRepositoryImpl @Inject constructor() : ClipboardRepository {
                 operation = null
 
                 allSucceeded
-            } catch (e: Exception) {
+            } catch (_: Exception) {
                 false
             }
         }

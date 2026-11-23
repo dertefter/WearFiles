@@ -6,6 +6,7 @@ import android.app.NotificationManager
 import android.app.Service
 import android.content.Intent
 import android.content.pm.ServiceInfo
+import android.media.MediaScannerConnection
 import android.net.wifi.WifiManager
 import android.os.Build
 import android.os.Environment
@@ -268,6 +269,14 @@ class FileReceiveService : Service() {
                 throw IOException("Failed to move ${partFile.name} to ${targetFile.name}")
             }
             Log.d(TAG, "File '$fileName' saved successfully to ${targetFile.absolutePath}")
+
+            MediaScannerConnection.scanFile(
+                applicationContext,
+                arrayOf(targetFile.absolutePath),
+                null
+            ) { path, uri ->
+                Log.d(TAG, "MediaScanner scanned $path -> uri=$uri")
+            }
 
             sendTransferStatus(nodeId, transferId, STATUS_SUCCESS)
 

@@ -2,6 +2,7 @@ package com.dertefter.wearfiles.data
 
 import android.Manifest
 import android.content.Context
+import android.media.MediaScannerConnection
 import android.os.Build
 import android.os.Environment
 import androidx.core.content.ContextCompat
@@ -65,7 +66,10 @@ class FileManagerRepositoryImpl @Inject constructor(
             val newFile = File(file.parent, newName)
 
             val success = file.renameTo(newFile)
-            if (success) refreshTrigger.emit(Unit)
+            if (success) {
+                MediaScannerConnection.scanFile(context, arrayOf(path, newFile.absolutePath), null, null)
+                refreshTrigger.emit(Unit)
+            }
             success
         }
     }
@@ -199,7 +203,10 @@ class FileManagerRepositoryImpl @Inject constructor(
             } else {
                 file.delete()
             }
-            if (success) refreshTrigger.emit(Unit)
+            if (success) {
+                MediaScannerConnection.scanFile(context, arrayOf(path), null, null)
+                refreshTrigger.emit(Unit)
+            }
             success
         }
     }
