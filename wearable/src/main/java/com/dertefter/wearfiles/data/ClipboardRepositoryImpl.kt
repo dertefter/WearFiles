@@ -61,15 +61,7 @@ class ClipboardRepositoryImpl @Inject constructor(
                             }
                         }
                         ClipboardOperation.CUT -> {
-                            val moved = if (srcFile.renameTo(target)) {
-                                true
-                            } else {
-                                if (srcFile.copyRecursively(target, overwrite = false)) {
-                                    srcFile.deleteRecursively()
-                                } else {
-                                    false
-                                }
-                            }
+                            val moved = srcFile.renameTo(target) || srcFile.copyRecursively(target, overwrite = false) && srcFile.deleteRecursively()
                             if (moved) {
                                 MediaScannerConnection.scanFile(context, arrayOf(srcPath, target.absolutePath), null, null)
                             } else {
