@@ -46,7 +46,6 @@ class NotificationHelper(private val context: Context) {
             TransferStatus.SENDING -> context.getString(R.string.notification_sending_desc, fileName, progress)
             TransferStatus.SUCCESS -> context.getString(R.string.notification_success_desc, fileName)
             TransferStatus.ERROR -> context.getString(R.string.notification_error_desc, fileName)
-            else -> return
         }
 
         val openAppIntent = Intent(context, MainActivity::class.java).apply {
