@@ -1,7 +1,7 @@
 [versions]
 
 # Plugins
-agp = "9.5.0"
+agp = "9.5.2"
 coilCompose = "2.7.0"
 coilVideo = "2.7.0"
 composePdf = "2.0.0"
@@ -12,8 +12,9 @@ kotlin = "2.4.21"
 ksp = "2.3.12"
 ossLicensesPlugin = "0.13.0"
 droibitOssLicenses = "0.10.0"
+
 # Compose
-composeBom = "2026.10.01"
+composeBom = "2026.11.01"
 activityCompose = "1.13.0"
 kotlinxCoroutinesAndroid = "1.11.0"
 kotlinxCoroutinesCore = "1.11.0"
@@ -22,9 +23,8 @@ markdownCompose = "1.0.4"
 navigationCompose = "2.10.2"
 
 # Wear Compose
-
-wearCompose = "1.7.1"
-wearComposeNavigation = "1.7.1"
+wearCompose = "1.7.2"
+wearComposeNavigation = "1.7.2"
 wearRemoteInteractions = "1.2.0"
 
 # Hilt
@@ -35,11 +35,11 @@ hiltNavigationCompose = "1.4.0"
 horologist = "0.7.15"
 
 # Other
-kotlinxSerializationJson = "1.12.0"
+kotlinxSerializationJson = "1.13.0"
 zoomable = "2.16.0"
-material3 = "1.4.0"
+material3 = "1.5.0"
 coreKtx = "1.19.1"
-lifecycleRuntimeKtx = "2.11.0"
+lifecycleRuntimeKtx = "2.11.1"
 playServicesWearable = "20.0.1"
 
 [libraries]
