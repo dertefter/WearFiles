@@ -18,7 +18,7 @@ plugins {
 
 android {
     namespace = "com.dertefter.wearfiles"
-    compileSdk { version = release(37) { minorApiLevel = 1 } }
+    compileSdk { version = release(37) { minorApiLevel = 2 } }
 
     defaultConfig {
         applicationId = "com.dertefter.wearfiles"
