@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="rename_failed">Redenumirea a eșuat</string>
+    <string name="rename_title">Redenumește</string>
+    <string name="rename_name">Nume</string>
+</resources>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error">Eroare</string>
+    <string name="grant_permissions">Acordă permisiuni</string>
+    <string name="perm_title">Pentru acest ecran sunt necesare permisiuni</string>
+    <string name="videos_title">Videoclipuri</string>
+    <string name="nothing_here">Nimic aici…</string>
+</resources>

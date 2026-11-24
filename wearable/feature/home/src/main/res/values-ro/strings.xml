@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="music">Muzică</string>
+    <string name="docs">Documente</string>
+    <string name="files">Explorator</string>
+    <string name="settings">Setări</string>
+    <string name="storage">Memorie</string>
+    <string name="pinned">Fixate</string>
+    <string name="photo">Fotografii</string>
+    <string name="video">Videoclipuri</string>
+    <string name="received">Primite</string>
+</resources>

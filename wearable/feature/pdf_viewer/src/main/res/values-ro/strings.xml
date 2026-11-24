@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pdf_viewer_empty">Fișier gol</string>
+    <string name="pdf_viewer_loading">Se încarcă…</string>
+    <string name="pdf_viewer_error_with_message">Eroare: %1$s</string>
+    <string name="pdf_viewer_invalid_pdf">PDF invalid</string>
+    <string name="pdf_viewer_could_not_open_file_descriptor">Fișierul nu a putut fi deschis</string>
+</resources>

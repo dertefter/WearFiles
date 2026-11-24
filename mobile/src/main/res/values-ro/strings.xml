@@ -1,0 +1,43 @@
+<resources>
+    <string name="share_label">Trimite pe ceas</string>
+    <string name="select_files">Selectează fișiere</string>
+    <string name="queue_empty">Coada este goală</string>
+    <string name="transfer_queue_title">Coada de transfer</string>
+    <string name="status_pending">În așteptare</string>
+    <string name="status_sending">Se trimite…</string>
+    <string name="status_waiting_watch">Se așteaptă ceasul…</string>
+    <string name="status_success">Reușit</string>
+    <string name="status_error">Eroare</string>
+    <string name="action_cancel">Anulează</string>
+    <string name="action_remove">Elimină</string>
+    <string name="notification_channel_name">Transfer de fișiere</string>
+    <string name="notification_channel_desc">Notificări pentru transferul fișierelor pe Wear OS</string>
+    <string name="notification_sending_title">Se trimite fișierul…</string>
+    <string name="notification_success_title">Fișier trimis</string>
+    <string name="notification_error_title">Eroare la transfer</string>
+    <string name="notification_sending_desc">Fișierul %1$s se transferă pe ceas (%2$d%%)</string>
+    <string name="notification_success_desc">Fișierul %1$s a fost salvat pe ceas</string>
+    <string name="notification_error_desc">Nu s-a putut trimite %1$s</string>
+    <string name="notification_preparing">Se pregătește…</string>
+    <string name="notification_file_queue">Coada de fișiere</string>
+    <string name="error_no_nodes">Niciun dispozitiv conectat</string>
+    <string name="error_input_stream">Fișierul nu a putut fi deschis</string>
+    <string name="error_canceled">Anulat</string>
+    <string name="file_default_name">fișier</string>
+    <string name="watch_connected">Ceas conectat</string>
+    <string name="watch_not_found">Ceasul nu a fost găsit</string>
+    <string name="ready_to_send">Gata de trimis</string>
+    <string name="check_connection">Verifică conexiunea cu ceasul Wear OS</string>
+    <string name="watch_not_nearby">Ceasul nu este în apropiere</string>
+    <string name="app_not_installed">Aplicația nu este instalată pe ceas</string>
+    <string name="install_app_on_watch">Instalează aplicația pe ceas</string>
+    <string name="bring_watch_closer">Asigură-te că ceasul este în apropiere</string>
+
+    <string name="about_oss_licenses">Licențe software</string>
+    <string name="about_telegram_chat">Chat Telegram</string>
+    <string name="about_github">GitHub</string>
+    <string name="about_donate">Susține-mă</string>
+    <string name="error_no_app_to_open_link">Nu există nicio aplicație pentru a deschide linkul</string>
+    <string name="back_content_description">Înapoi</string>
+    <string name="menu_content_description">Meniu</string>
+</resources>
