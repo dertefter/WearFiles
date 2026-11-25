@@ -1,4 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <string name="share_label">发送至手表</string>
+    <string name="select_files">选择文件</string>
+    <string name="queue_empty">队列为空</string>
+    <string name="transfer_queue_title">文件传输队列</string>
+    <string name="status_pending">等待中</string>
+    <string name="status_sending">正在发送…</string>
+    <string name="status_waiting_watch">正在等待手表…</string>
+    <string name="status_success">发送成功</string>
+    <string name="status_error">错误</string>
+    <string name="action_cancel">取消</string>
+    <string name="action_remove">移除</string>
+    <string name="notification_channel_name">文件传输</string>
+    <string name="notification_channel_desc">Wear OS 文件传输通知</string>
+    <string name="notification_sending_title">正在发送文件…</string>
+    <string name="notification_success_title">文件已发送</string>
+    <string name="notification_error_title">传输错误</string>
+    <string name="notification_sending_desc">文件 %1$s 正在传输至手表 (%2$d%%)</string>
+    <string name="notification_success_desc">文件 %1$s 已成功保存至手表</string>
+    <string name="notification_error_desc">无法发送 %1$s</string>
+    <string name="notification_preparing">正在准备…</string>
+    <string name="notification_file_queue">文件队列</string>
+    <string name="error_no_nodes">未连接任何设备</string>
+    <string name="error_input_stream">无法打开输入流</string>
+    <string name="error_canceled">已取消</string>
+    <string name="file_default_name">文件</string>
+    <string name="watch_connected">手表已连接</string>
+    <string name="watch_not_found">未找到手表</string>
+    <string name="ready_to_send">准备发送</string>
+    <string name="check_connection">请检查与 Wear OS 手表的连接</string>
+    <string name="watch_not_nearby">手表不在附近</string>
+    <string name="app_not_installed">手表上未安装应用</string>
+    <string name="install_app_on_watch">请在手表上安装此应用</string>
+    <string name="bring_watch_closer">请确保手表在附近</string>
+    <string name="about_oss_licenses">开源软件许可</string>
+    <string name="about_telegram_chat">Telegram 群组</string>
+    <string name="about_github">GitHub</string>
+    <string name="about_donate">赞赏支持</string>
+    <string name="error_no_app_to_open_link">未找到用于打开链接的应用</string>
+    <string name="back_content_description">返回</string>
+    <string name="menu_content_description">菜单</string>
 </resources>
