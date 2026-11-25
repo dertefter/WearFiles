@@ -2,10 +2,12 @@
   <img src="art/banner.png" alt="Banner">
 </p>
 
-[![Google Play](https://playbadges.pavi2410.com/badge/downloads?id=com.dertefter.wearfiles)](https://play.google.com/store/apps/details?id=com.dertefter.wearfiles)
-[![Telegram](https://img.shields.io/badge/Telegram-11A8FF?logo=telegram&logoColor=white)](https://t.me/wearfiles_app)
-[![Support](https://img.shields.io/badge/Support-AD72FF?logo=ko--fi&logoColor=white)](https://dalink.to/dertefter)
-[![Русский](https://img.shields.io/badge/Русский-AA0000)](README_RU.md)
+<p align="center">
+  [![Google Play](https://playbadges.pavi2410.com/badge/downloads?id=com.dertefter.wearfiles)](https://play.google.com/store/apps/details?id=com.dertefter.wearfiles)
+  [![Telegram](https://img.shields.io/badge/Telegram-11A8FF?logo=telegram&logoColor=white)](https://t.me/wearfiles_app)
+  [![Support](https://img.shields.io/badge/Support-AD72FF?logo=ko--fi&logoColor=white)](https://dalink.to/dertefter)
+  [![Русский](https://img.shields.io/badge/Русский-AA0000)](README_RU.md)
+</p>
 
 # WearFiles
 
