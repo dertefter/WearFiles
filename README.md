@@ -2,15 +2,10 @@
   <img src="art/banner.png" alt="Banner">
 </p>
 
-<a href="https://play.google.com/store/apps/details?id=com.dertefter.wearfiles">
-  <img src="https://github.com/dertefter/some_stuff_for_me/blob/master/com.dertefter.wearfiles_downloads.svg" alt="Google Play" height="60">
-</a><a href="https://play.google.com/store/apps/details?id=com.dertefter.wearfiles">
-  <img src="https://github.com/dertefter/some_stuff_for_me/blob/master/com.dertefter.wearfiles_rating.svg" alt="Google Play" height="60">
-</a><a href="README_RU.md">
-  <img src="https://img.shields.io/badge/Russian-blue?style=for-the-badge" alt="Русский язык" height="60">
-</a><a href="https://t.me/wearfiles_app">
-  <img src="https://img.shields.io/badge/Telegram-Chat?style=for-the-badge&logo=telegram&logoColor=%23ffffff&color=%2327b0f6" alt="Telegram" height="60">
-</a>
+[![Google Play](https://playbadges.pavi2410.com/badge/downloads?id=com.dertefter.wearfiles)](https://play.google.com/store/apps/details?id=com.dertefter.wearfiles)
+[![Telegram](https://img.shields.io/badge/Telegram-11A8FF?logo=telegram&logoColor=white)](https://t.me/wearfiles_app)
+[![Support](https://img.shields.io/badge/Support-AD72FF?logo=ko--fi&logoColor=white)](https://dalink.to/dertefter)
+[![Русский](https://img.shields.io/badge/Русский-AA0000)](README_RU.md)
 
 # WearFiles
 
@@ -19,7 +14,7 @@ A simple open-source file manager designed for Wear OS ⌚
 ### App Features:
 
 - File transfer from phone to watch ⌚➡️📱
-- View, open, delete files on Wear OS device 📂
+- View, open, rename, delete files on Wear OS 📂
 - Clipboard: cut / copy / paste 📋
 - Pin files and folders to the main screen 📌
 - Built-in image viewer 🖼️
