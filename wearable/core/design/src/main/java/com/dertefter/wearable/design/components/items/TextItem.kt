@@ -19,7 +19,6 @@ import androidx.wear.compose.foundation.lazy.TransformingLazyColumn
 import androidx.wear.compose.foundation.lazy.TransformingLazyColumnItemScope
 import androidx.wear.compose.material3.Card
 import androidx.wear.compose.material3.CardDefaults
-import androidx.wear.compose.material3.LocalTextStyle
 import androidx.wear.compose.material3.MaterialTheme
 import androidx.wear.compose.material3.SurfaceTransformation
 import androidx.wear.compose.material3.Text
@@ -33,7 +32,7 @@ fun TransformingLazyColumnItemScope.TextItem(
     modifier: Modifier = Modifier,
     text: String,
     textColor: Color = MaterialTheme.colorScheme.onSurface,
-    textStyle: TextStyle = LocalTextStyle.current,
+    textStyle: TextStyle = MaterialTheme.typography.bodyMedium,
     textAlign: TextAlign = TextAlign.Start
 
 ) {
