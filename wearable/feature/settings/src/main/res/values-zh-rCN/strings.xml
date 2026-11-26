@@ -7,4 +7,5 @@
     <string name="sys_settings">系统设置</string>
     <string name="send_success">查看你的手机</string>
     <string name="send_git_failed">无法发送到您的手机</string>
+    <string name="github" translatable="false"></string>
 </resources>
