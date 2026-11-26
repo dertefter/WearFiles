@@ -11,4 +11,5 @@
     <string name="failed">Eșuat</string>
     <string name="try_grant_permissions">Încearcă să acorzi permisiunile fără PC</string>
     <string name="error_opening_settings">Indisponibil pe acest dispozitiv</string>
+    <string name="pt2_command" translatable="false"></string>
 </resources>
