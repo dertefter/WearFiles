@@ -28,7 +28,6 @@ A simple open-source file manager designed for Wear OS ⌚
   <img src="art/screenshot_2.png" width="160" alt="Screenshot 2">  
   <img src="art/screenshot_3.png" width="160" alt="Screenshot 3">  
   <img src="art/screenshot_4.png" width="160" alt="Screenshot 4">  
-  <img src="art/screenshot_5.png" width="160" alt="Screenshot 5">  
 </p>  
 
 ### File transfer from phone to watch:
