@@ -7,4 +7,5 @@
     <string name="sys_settings">Системные настройки</string>
     <string name="send_success">Проверьте Ваш телефон</string>
     <string name="send_git_failed">Не удалось отправить ссылку на телефон</string>
+    <string name="github" translatable="false"></string>
 </resources>
