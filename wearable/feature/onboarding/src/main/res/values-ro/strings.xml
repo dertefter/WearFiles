@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="permission_required">Este necesară permisiunea de acces la fișiere</string>
+    <string name="grant_permission">Acordă permisiunea</string>
+    <string name="having_trouble">Nu funcționează?</string>
     <string name="permission_alert">Din cauza limitărilor platformei Wear OS, aplicația nu poate obține singură acces la fișiere. Trebuie să faci asta manual:</string>
     <string name="pt1">Conectează ceasul la un computer prin ADB</string>
     <string name="pt2">Rulează următoarea comandă:</string>

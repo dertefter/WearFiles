@@ -67,7 +67,7 @@ fun OnBoardingContent(onEvent: (Event) -> Unit){
             item {
                 TextItem(
                     transformationSpec,
-                    text = "Необходимо разрешение на доступ к файлам",
+                    text = stringResource(R.string.permission_required),
                     textStyle = MaterialTheme.typography.bodyMedium,
                     textAlign = TextAlign.Center
                 )
@@ -84,7 +84,7 @@ fun OnBoardingContent(onEvent: (Event) -> Unit){
                     transformation = SurfaceTransformation(transformationSpec),
                     ) {
                     Text(
-                        text = "Предоставить разрешение",
+                        text = stringResource(R.string.grant_permission),
                     )
                 }
             }
@@ -171,7 +171,7 @@ fun OnBoardingContent(onEvent: (Event) -> Unit){
                         transformation = SurfaceTransformation(transformationSpec),
                     ) {
                         Text(
-                            text = "Не выходит?",
+                            text = stringResource(R.string.having_trouble),
                         )
                     }
                 }

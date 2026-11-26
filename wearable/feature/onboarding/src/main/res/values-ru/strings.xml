@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="permission_required">Необходимо разрешение на доступ к файлам</string>
+    <string name="grant_permission">Предоставить разрешение</string>
+    <string name="having_trouble">Не выходит?</string>
     <string name="permission_alert">В связи с ограничениями платформы Wear OS приложение не может выдать разрешение для доступа к файлам. Вам необходимо сделать это вручную:</string>
     <string name="pt3">Перезапустите приложение</string>
     <string name="info">Посмотреть инструкции на телефоне</string>
