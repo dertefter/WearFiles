@@ -1,22 +1,22 @@
-<p align="center">
+<p align="center">  
   <img src="art/banner.png" alt="Banner">
-</p>
+</p>  
 
 <p align="center">
   <a href="https://play.google.com/store/apps/details?id=com.dertefter.wearfiles"><img src="https://playbadges.pavi2410.com/badge/downloads?id=com.dertefter.wearfiles" alt="Google Play"></a>
   <a href="https://t.me/wearfiles_app"><img src="https://img.shields.io/badge/Telegram-11a8ff?logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNTYiIGhlaWdodD0iMjU2IiB2aWV3Qm94PSIwIDAgNDggNDgiIGZpbGw9IiNmZmZmZmYiPjxwYXRoIGQ9Ik00MS40MTkzIDcuMzA4OTlDNDEuNDE5MyA3LjMwODk5IDQ1LjMwNDYgNS43OTM5OSA0NC45ODA4IDkuNDczMjhDNDQuODcyOSAxMC45ODgzIDQzLjkwMTYgMTYuMjkwOCA0My4xNDYxIDIyLjAyNjJMNDAuNTU1OSAzOS4wMTU5QzQwLjU1NTkgMzkuMDE1OSA0MC4zNDAxIDQxLjUwNDggMzguMzk3NCA0MS45Mzc3QzM2LjQ1NDcgNDIuMzcwNSAzMy41NDA4IDQwLjQyMjcgMzMuMDAxMSAzOS45ODk4QzMyLjU2OTQgMzkuNjY1MiAyNC45MDY4IDM0Ljc5NTUgMjIuMjA4NiAzMi40MTQ4QzIxLjQ1MzEgMzEuNzY1NSAyMC41ODk3IDMwLjQ2NjkgMjIuMzE2NSAyOC45NTE5TDMzLjY0ODcgMTguMTMwNUMzNC45NDM4IDE2LjgzMTkgMzYuMjM4OSAxMy44MDE5IDMwLjg0MjYgMTcuNDgxMkwxNS43MzMxIDI3Ljc2MTZDMTUuNzMzMSAyNy43NjE2IDE0LjAwNjMgMjguODQzNyAxMC43Njg2IDI3Ljg2OThMMy43NTM0MiAyNS43MDU1QzMuNzUzNDIgMjUuNzA1NSAxLjE2MzIxIDI0LjA4MjMgNS41ODgxNSAyMi40NTlDMTYuMzgwNyAxNy4zNzI5IDI5LjY1NTUgMTIuMTc4NiA0MS40MTkzIDcuMzA4OTlaIi8+PC9zdmc+&logoColor=%23ffffff" alt="Telegram"></a>
   <a href="https://dalink.to/dertefter"><img src="https://img.shields.io/badge/Support-ad72ff?logo=data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjQgMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHdpZHRoPSIyNC4wMDAwMDAiIGhlaWdodD0iMjQuMDAwMDAwIiBmaWxsPSJub25lIj4KCTxyZWN0IGlkPSJmYXYgMSIgd2lkdGg9IjI0LjAwMDAwMCIgaGVpZ2h0PSIyNC4wMDAwMDAiIHg9IjAuMDAwMDAwIiB5PSIwLjAwMDAwMCIgLz4KCTxwYXRoIGlkPSLQktC10LrRgtC+0YAgOCIgZD0iTTEyIDIzTDExLjU1OTUgMjIuNTcxNEM5LjIzMzQ4IDIwLjQyODYgNy4zMTI3OCAxOC42MTkxIDUuNzk3MzYgMTcuMTQyOUM0LjI4MTk0IDE1LjY2NjggMy4wOTU0NSAxNC4zNzUxIDIuMjM3ODkgMTMuMjY4QzEuMzgwMzIgMTIuMTYwOSAwLjc5Mjk1MiAxMS4xOTA2IDAuNDc1NzcxIDEwLjM1NzNDMC4xNTg1OSA5LjUyNCAwIDguNjY2ODcgMCA3Ljc4NTkzQzAgNi4xOTA3MiAwLjU1ODAwMyA0LjgyNzY0IDEuNjc0MDEgMy42OTY3MUMyLjc5MDAxIDIuNTY1NzcgNC4xMzUxIDIuMDAwMyA1LjcwOTI1IDIuMDAwM0M2LjkxOTI0IDIuMDAwMyA4LjA3MDQ5IDIuMzM5NTggOS4xNjMgMy4wMTgxNUMxMC4yNTU1IDMuNjk2NzEgMTEuMjAxMiA0LjcwMjY1IDEyIDYuMDM1OTZDMTIuODIyMyA0LjcxNDU1IDEzLjc3MzkgMy43MDg2MSAxNC44NTQ2IDMuMDE4MTVDMTUuOTM1NCAyLjMyNzY4IDE3LjA4MDggMS45ODg0IDE4LjI5MDcgMi4wMDAzQzE5Ljg2NDkgMi4wMDAzIDIxLjIxIDIuNTY1NzcgMjIuMzI2IDMuNjk2NzFDMjMuNDQyIDQuODI3NjQgMjQgNi4xODQ3NyAyNCA3Ljc2ODA4QzI0IDguNjI1MjEgMjMuODQ3MyA5LjQ3MDQzIDIzLjU0MTggMTAuMzAzOEMyMy4yMzY0IDExLjEzNzEgMjIuNjU0OSAxMi4wODk0IDIxLjc5NzQgMTMuMTYwOUMyMC45Mzk4IDE0LjIzMjMgMTkuNzUzMyAxNS41Mjk5IDE4LjIzNzkgMTcuMDUzN0MxNi43MjI1IDE4LjU3NzQgMTQuNzY2NSAyMC40NDA1IDEyLjM3IDIyLjY0MjlMMTIgMjNaIiBmaWxsPSJyZ2IoMjU1LDI1NSwyNTUpIiBmaWxsLXJ1bGU9Im5vbnplcm8iIC8+Cjwvc3ZnPgo=" alt="Support"></a>
   <a href="README_RU.md"><img src="https://img.shields.io/badge/Читать%20на%20русском-AA0000" alt="Русский"></a>
-</p>
+</p>  
 
 # WearFiles
 
-A simple open-source file manager designed for Wear OS ⌚
+Simple open-source file manager designed for Wear OS ⌚
 
 ### App Features:
 
-- File transfer from phone to watch ⌚➡️📱
-- View, open, rename, delete files on Wear OS 📂
+- Transfer files from phone to watch ⌚➡️📱
+- View, open, delete files on Wear OS device 📂
 - Clipboard: cut / copy / paste 📋
 - Pin files and folders to the main screen 📌
 - Built-in image viewer 🖼️
@@ -27,44 +27,17 @@ A simple open-source file manager designed for Wear OS ⌚
   <img src="art/screenshot_1.png" width="160" alt="Screenshot 1">  
   <img src="art/screenshot_2.png" width="160" alt="Screenshot 2">  
   <img src="art/screenshot_3.png" width="160" alt="Screenshot 3">  
-  <img src="art/screenshot_4.png" width="160" alt="Screenshot 4">  
-</p>  
-
-### File transfer from phone to watch:
-
-You can transfer files from your smartphone to your watch. To do this, install the app on both devices and make sure the connection with the watch is established.
-
-<p align="center">
-  <img src="art/example_file_transfer.gif" width="320" alt="example_file_transfer">
+  <img src="art/screenshot_4.png" width="160" alt="Screenshot 4">
 </p>
 
-### ⚠️ File Access Permission ⚠️
+### [FAQ](FAQ.md)
+- File transfer from smartphone to watch
+- Accessing "Storage" (Device Storage)
 
-To use the app on your watch as a file manager, you need to grant file access permission: `MANAGE_EXTERNAL_STORAGE`. Due to Wear OS platform limitations, the app cannot request this permission on its own.
-However, you can use the app without it in a limited mode. You probably **don't need full file access if you just want to transfer a file from your phone and open it on your watch**.
-
-#### What works without `MANAGE_EXTERNAL_STORAGE` permission:
-
-- "Photos": view the list of images stored on the device
-- "Videos": videos stored on the device
-- "Music": list of audio files on the device
-- "Received": files received from the phone
-- Opening the above files (if software to open these file types is available)
-
-#### How to grant permission manually:
-If you decide that you need full access to files, you can grant permission using ADB:
-
-1. Connect the watch to the computer via ADB
-2. Run the command:  
-   ``adb shell appops set --uid com.dertefter.wearfiles MANAGE_EXTERNAL_STORAGE allow``
-3. Restart the app
-
-### FAQ [HERE](FAQ.md)
-
-### 💎 Support me:
+### Support the project 💰:
 [https://dalink.to/dertefter](https://dalink.to/dertefter)
 
-## Star History
+### Star History
 
 <a href="https://www.star-history.com/?repos=dertefter%2Fwearfiles&type=date&releases=&legend=bottom-right">
  <picture>
