@@ -9,4 +9,5 @@
     <string name="photo">Fotografii</string>
     <string name="video">Videoclipuri</string>
     <string name="received">Primite</string>
+    <string name="home_title" translatable="false"></string>
 </resources>
