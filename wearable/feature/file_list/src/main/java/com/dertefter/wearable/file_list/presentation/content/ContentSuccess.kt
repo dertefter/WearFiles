@@ -165,97 +165,94 @@ fun ContentSuccess(
             }
         }
 
+    }
 
-        AnimatedVisibility(
-            visible = selectedFilePaths.isNotEmpty(),
+    AnimatedVisibility(
+        visible = selectedFilePaths.isNotEmpty(),
+        modifier = Modifier.fillMaxSize(),
+    ) {
+        Box(
             modifier = Modifier.fillMaxSize(),
-        ) {
-            Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.BottomCenter
-            )
-            {
-                Column(
-                    verticalArrangement = Arrangement.spacedBy(6.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    modifier = Modifier
-                        .padding(
-                            bottom = 12.dp,
-                            start = 30.dp,
-                            end = 30.dp
-                        )
+            contentAlignment = Alignment.BottomCenter
+        )
+        {
+            Column(
+                verticalArrangement = Arrangement.spacedBy(6.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier
+                    .padding(
+                        bottom = 12.dp,
+                        start = 30.dp,
+                        end = 30.dp
+                    )
+            ){
+
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(4.dp),
+                    modifier = Modifier.fillMaxWidth()
                 ){
-
-                    Row(
-                        horizontalArrangement = Arrangement.spacedBy(4.dp),
-                        modifier = Modifier.fillMaxWidth()
-                    ){
-                        val allSelected = selectedFilePaths.size == files.size
-                        Button(
-                            onClick = {
-                                if (allSelected) {
-                                    selectedFilePaths.clear()
-                                } else {
-                                    selectedFilePaths.clear()
-                                    selectedFilePaths.addAll(files.map { it.absolutePath })
-                                }
-                            },
-                            modifier = Modifier
-                                .weight(1f)
-                                .height(28.dp)
-                        ){
-                            Text(
-                                if (allSelected) stringResource(R.string.deselect_all) else stringResource(R.string.select_all),
-                                textAlign = TextAlign.Center,
-                                modifier = Modifier.fillMaxWidth(),
-                                fontSize = 10.sp
-                            )
-                        }
-                        FilledIconButton(
-                            modifier = Modifier
-                                .size(28.dp),
-                            onClick = {
-                                selectedFilePaths.clear()
-                            }
-                        ) {
-                            Icon(
-                                imageVector = Icons.Close,
-                                modifier = Modifier.size(20.dp),
-                                contentDescription = null
-                            )
-                        }
-                    }
-
-
-                    FilledTonalIconButton(
-                        modifier = Modifier
-                            .size(34.dp),
+                    val allSelected = selectedFilePaths.size == files.size
+                    Button(
                         onClick = {
-                            onEvent(
-                                Event.OnShowMenuFor(
-                                    paths = selectedFilePaths.toList(),
-                                    menuMode = MenuMode.OUTSIDE
-                                )
-                            )
+                            if (allSelected) {
+                                selectedFilePaths.clear()
+                            } else {
+                                selectedFilePaths.clear()
+                                selectedFilePaths.addAll(files.map { it.absolutePath })
+                            }
                         },
-                        colors = IconButtonDefaults.filledTonalIconButtonColors(
-                            contentColor = MaterialTheme.colorScheme.onTertiary,
-                            containerColor = MaterialTheme.colorScheme.tertiary
+                        modifier = Modifier
+                            .weight(1f)
+                            .height(28.dp)
+                    ){
+                        Text(
+                            if (allSelected) stringResource(R.string.deselect_all) else stringResource(R.string.select_all),
+                            textAlign = TextAlign.Center,
+                            modifier = Modifier.fillMaxWidth(),
+                            fontSize = 10.sp
                         )
+                    }
+                    FilledIconButton(
+                        modifier = Modifier
+                            .size(28.dp),
+                        onClick = {
+                            selectedFilePaths.clear()
+                        }
                     ) {
                         Icon(
-                            imageVector = Icons.MoreHorizontal,
+                            imageVector = Icons.Close,
                             modifier = Modifier.size(20.dp),
                             contentDescription = null
                         )
                     }
-
                 }
+
+
+                FilledTonalIconButton(
+                    modifier = Modifier
+                        .size(34.dp),
+                    onClick = {
+                        onEvent(
+                            Event.OnShowMenuFor(
+                                paths = selectedFilePaths.toList(),
+                                menuMode = MenuMode.OUTSIDE
+                            )
+                        )
+                    },
+                    colors = IconButtonDefaults.filledTonalIconButtonColors(
+                        contentColor = MaterialTheme.colorScheme.onTertiary,
+                        containerColor = MaterialTheme.colorScheme.tertiary
+                    )
+                ) {
+                    Icon(
+                        imageVector = Icons.MoreHorizontal,
+                        modifier = Modifier.size(20.dp),
+                        contentDescription = null
+                    )
+                }
+
             }
         }
-
-
-
     }
 
 }
