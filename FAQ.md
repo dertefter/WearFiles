@@ -1,70 +1,41 @@
-# FAQ
+<a href="FAQ_RU.md"><img src="https://img.shields.io/badge/Читать%20на%20русском-AA0000" alt="Русский"></a>
 
-[Читать на русском](FAQ_RU.md)
+# Frequently Asked Questions
 
-Here is a collection of popular questions and answers.
+Here is a list of popular questions and answers to them.
 
-## 1. I found a bug / I want to suggest an idea.
-You can leave an issue, and we also have a [Telegram chat](https://t.me/wearfiles_app).
+### I found a bug / want to suggest an idea.
+You can open an issue, and we also have a [Telegram chat](https://t.me/wearfiles_app).
 
-## 2. I didn't understand anything about ADB and granting permissions. Please explain what's what?
+### Transferring files from smartphone to watch
 
-So, I'll try to describe it in simple terms. Let's start from afar. In Android, there are several ways to access files:
+> [!WARNING]
+> **File transfer will be unavailable on devices without Google Play services.**
 
-### [MediaStore API](https://developer.android.com/training/data-storage/shared/media)
+You can transfer files from a smartphone to a watch. You can find the received files in the app on the watch in the "Received" section.
 
-- This is a way to access photos/videos/music
-- The following permissions are used: `READ_MEDIA_IMAGES`, `READ_MEDIA_VIDEO`, `READ_MEDIA_AUDIO`
-- In this mode, we **do not get** permission to access all files (`MANAGE_EXTERNAL_STORAGE`)
-- The permissions `READ_MEDIA_IMAGES`, `READ_MEDIA_VIDEO`, `READ_MEDIA_AUDIO` can be granted directly from the watch, there won't be any hassle with ADB
+For file transfer to work:
 
-##### Example:
-From the main screen, you open the "Photos" section. The watch will request the necessary permission itself: a standard permission request dialog will open.
-After granting the permissions, you will be able to view the list of photos, as well as open and view them. **That's it!**
+1. Make sure that Google Play services are present on both the smartphone and the watch and updated to the latest version.
 
-### [Full file access](https://developer.android.com/training/data-storage/manage-all-files)
+2. Install the WearFiles app on the smartphone and on the watch.
 
-- This is a way to get full access to files on the device.
-- The `MANAGE_EXTERNAL_STORAGE` permission is required
-
-##### Example:
-
-From the main screen, you open the "Device storage" section. If the permission is granted, you will be able to:
-- View files and folders on the device
-- Move, delete, rename files and folders
-- Create folders
-
-To grant the permission for access to all files, you may need to connect to the device via ADB. Or maybe not :)
-
-### Why is that?
-
-For a long time, the permission for access to all files was broken on WearOS. Usually, on devices running **WearOS 6 and earlier**, this permission is not shown in the permission settings and cannot be granted just like that.
-
-However, on **WearOS 7**, according to reports from many users, this permission is available again and **can be granted** directly from the watch without using ADB.
-
-### Let's sum up
-
-- If you just want to view photos/videos on the device. Or if you just want to transfer a file from your phone and open it on the watch:
-  **You don't need to bother with ADB**.
-- If you want to use the WearFiles app as a file manager on your watch: you may have to bother with ADB.
-
-## 3. What needs to be done to transfer files from a smartphone to the watch?
-
-- Install the app on the smartphone and on the watch.
-- Make sure both are updated to the latest version.
-- Make sure the watch is connected to the smartphone.
-- Make sure Google services are updated and the watch is detected in the WearOS app (or in the Watch app if you have a Pixel Watch)
-
-File transfer relies on Google services, so the stability of file transfer heavily depends on them.
+    Both apps must be downloaded from the same source.  
+    For example, if the app on the smartphone is downloaded from Google Play, the app on the watch must also be downloaded from Google Play.
 
 
-## 4. My watch/smartphone doesn't have Google services / doesn't have Google Play. Will I be able to transfer files from my smartphone to the watch?
+### "Storage" section
 
-**No. File transfer is impossible if one of the devices doesn't have Google services.**
+To use the app on the watch as a file manager, you need to grant permission to access files: `MANAGE_EXTERNAL_STORAGE`. Due to Wear OS platform limitations, on some devices this permission cannot be granted directly in the UI.
 
+First, check if this permission is available in settings:
+<p align="center">  
+  <img src="art/s_faq_1.png" width="160" alt="Screenshot 1">  
+  <img src="art/s_faq_2.png" width="160" alt="Screenshot 2"> 
+</p>
 
-## 5. I am 100% sure that file transfer should work, but the app doesn't see my watch.
-
-- At the moment, this problem does exist. It appears on some devices.
-- I can't determine exactly what this problem is related to. File transfer heavily depends on Google services, so it's difficult to identify the source of the problem.
-- Try the advice from point 2. I also recommend checking whether the WearFiles app, Google services, and the WearOS app are being killed by the system.
+If there is no option in settings to grant permission to access all files, you can use ADB:
+1. Connect the watch to a computer via ADB
+2. Run the command:  
+   ``adb shell appops set --uid com.dertefter.wearfiles MANAGE_EXTERNAL_STORAGE allow``
+3. Restart the app
