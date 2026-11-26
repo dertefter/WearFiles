@@ -31,8 +31,8 @@ Simple open-source file manager designed for Wear OS ⌚
 </p>
 
 ### [FAQ](FAQ.md)
-- File transfer from smartphone to watch
-- Accessing "Storage" (Device Storage)
+- [File transfer from smartphone to watch](https://github.com/dertefter/WearFiles/blob/master/FAQ.md#transferring-files-from-smartphone-to-watch)
+- [Accessing "Storage"](https://github.com/dertefter/WearFiles/blob/master/FAQ.md#storage-section)
 
 ### Support the project 💰:
 [https://dalink.to/dertefter](https://dalink.to/dertefter)
