@@ -10,10 +10,7 @@ fun OnBoardingRoute(
     viewModel: OnBoardingViewModel = hiltViewModel()
 ) {
 
-    val uiState = viewModel.state
-
     OnBoardingScreen(
-        uiState = uiState,
         onEvent = viewModel::onEvent,
         dialogState = viewModel.dialogState
     )

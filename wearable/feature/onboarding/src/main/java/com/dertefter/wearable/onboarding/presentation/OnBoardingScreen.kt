@@ -10,16 +10,12 @@ import androidx.wear.compose.material3.Icon
 import androidx.wear.compose.material3.Text
 import com.dertefter.wearable.design.icons.Icons
 import com.dertefter.wearable.onboarding.R
-import com.dertefter.wearable.onboarding.presentation.content.ContentFailed
-import com.dertefter.wearable.onboarding.presentation.content.ContentLoading
-import com.dertefter.wearable.onboarding.presentation.content.ContentSuccess
+import com.dertefter.wearable.onboarding.presentation.content.OnBoardingContent
 import com.dertefter.wearable.onboarding.presentation.content.DialogState
-import com.dertefter.wearable.onboarding.presentation.content.UiState
 
 @Composable
 fun OnBoardingScreen(
     onEvent: (Event) -> Unit,
-    uiState: UiState,
     dialogState: DialogState = DialogState.CLOSED
 ) {
 
@@ -32,18 +28,23 @@ fun OnBoardingScreen(
     {
         Alert(
             icon = {
-                if (dialogState == DialogState.SUCCESS){
-                    Icon(
-                        imageVector = Icons.Check,
-                        contentDescription = stringResource(R.string.success)
-                    )
-                } else if (dialogState == DialogState.FAILED){
-                    Icon(
-                        imageVector = Icons.Error,
-                        contentDescription = stringResource(R.string.failed)
-                    )
+
+                val iconRes = if (dialogState == DialogState.SUCCESS) {
+                    Icons.Check
+                } else {
+                    Icons.Error
                 }
 
+                val contentDescription = if (dialogState == DialogState.SUCCESS) {
+                    stringResource(R.string.success)
+                } else {
+                    stringResource(R.string.failed)
+                }
+
+                Icon(
+                    imageVector = iconRes,
+                    contentDescription = contentDescription
+                )
             },
             title = {
 
@@ -52,32 +53,28 @@ fun OnBoardingScreen(
                         DialogState.SUCCESS -> {
                             stringResource(R.string.send_success)
                         }
+
                         DialogState.FAILED -> {
                             stringResource(R.string.send_failed)
                         }
+
                         else -> ""
                     },
                     textAlign = TextAlign.Center
                 )
             },
-
-            ){
-
-        }
+            content = {}
+            )
     }
 
-    when(uiState){
-        UiState.LOADING -> ContentLoading()
-        UiState.SUCCESS -> ContentSuccess()
-        UiState.FAILED -> ContentFailed(onEvent = onEvent)
-    }
+    OnBoardingContent(onEvent = onEvent)
 
 }
 
 @Composable
 @Preview(device = "id:wearos_small_round", showBackground = true, showSystemUi = false)
-fun OnBoardingScreenPreview(){
-    OnBoardingScreen({}, UiState.LOADING)
+fun OnBoardingScreenPreview() {
+    OnBoardingScreen({})
 }
 
 

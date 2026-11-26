@@ -6,7 +6,6 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dertefter.wearable.onboarding.presentation.content.DialogState
-import com.dertefter.wearable.onboarding.presentation.content.UiState
 import com.dertefter.wearable.onboarding.usecase.OpenLinkOnPhoneUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -17,9 +16,6 @@ class OnBoardingViewModel @Inject constructor(
     val openLinkOnPhoneUseCase: OpenLinkOnPhoneUseCase,
 ) : ViewModel() {
 
-
-    var state by mutableStateOf(UiState.FAILED)
-        private set
 
     var dialogState by mutableStateOf(DialogState.CLOSED)
         private set
@@ -48,7 +44,7 @@ class OnBoardingViewModel @Inject constructor(
 
     private fun openLinkOnPhone(){
         viewModelScope.launch {
-            openLinkOnPhoneUseCase("https://github.com/dertefter/WearFiles/tree/master?tab=readme-ov-file#how-to-manually-grant-access-to-files")
+            openLinkOnPhoneUseCase("https://github.com/dertefter/WearFiles/blob/master/FAQ.md#storage-section")
                 .onSuccess {
                     onEvent(Event.ShowDialog(isSuccessful = true))
                 }
