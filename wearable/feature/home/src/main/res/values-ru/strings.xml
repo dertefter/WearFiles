@@ -9,5 +9,4 @@
     <string name="pinned">Закреплено</string>
     <string name="video">Видео</string>
     <string name="received">Получено</string>
-    <string name="home_title" translatable="false"></string>
 </resources>

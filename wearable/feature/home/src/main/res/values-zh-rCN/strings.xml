@@ -9,5 +9,4 @@
     <string name="photo">图片</string>
     <string name="video">视频</string>
     <string name="received">已收到</string>
-    <string name="home_title" translatable="false"></string>
 </resources>
