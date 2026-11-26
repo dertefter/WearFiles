@@ -40,4 +40,5 @@
     <string name="error_no_app_to_open_link">未找到用于打开链接的应用</string>
     <string name="back_content_description">返回</string>
     <string name="menu_content_description">菜单</string>
+    <string name="mobile_app_name" translatable="false"></string>
 </resources>
