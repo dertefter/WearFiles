@@ -11,5 +11,4 @@
     <string name="failed">Не удалось</string>
     <string name="try_grant_permissions">Попробовать выдать разрешения без ПК</string>
     <string name="error_opening_settings">Недоступно на вашем устройстве</string>
-    <string name="pt2_command" translatable="false"></string>
 </resources>
