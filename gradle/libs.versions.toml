@@ -1,7 +1,7 @@
 [versions]
 
 # Plugins
-agp = "9.5.2"
+agp = "9.5.3"
 coilCompose = "2.7.0"
 coilVideo = "2.7.0"
 composePdf = "2.0.0"
