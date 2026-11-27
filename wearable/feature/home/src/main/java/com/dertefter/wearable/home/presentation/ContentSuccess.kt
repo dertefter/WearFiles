@@ -31,7 +31,7 @@ import com.dertefter.wearable.design.components.common.rememberSafeRotaryScrolla
 import com.dertefter.wearable.design.components.items.FileItem
 import com.dertefter.wearable.design.components.items.FileItemType
 import com.dertefter.wearable.design.icons.Icons
-import com.dertefter.wearable.home.R
+import com.dertefter.wearable.design.R
 import com.dertefter.wearable.home.model.HomeItem
 import com.dertefter.wearable.home.model.HomeItemType
 import com.dertefter.wearable.navigation.Routes

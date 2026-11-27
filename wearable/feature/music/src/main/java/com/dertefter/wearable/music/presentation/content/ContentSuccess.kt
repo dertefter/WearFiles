@@ -19,7 +19,7 @@ import androidx.wear.compose.material3.lazy.transformedHeight
 import com.dertefter.wearable.design.components.common.rememberSafeRotaryScrollableBehavior
 import com.dertefter.wearable.design.components.items.FileItem
 import com.dertefter.wearable.design.icons.Icons
-import com.dertefter.wearable.music.R
+import com.dertefter.wearable.design.R
 import com.dertefter.wearable.music.data.MusicItem
 import com.dertefter.wearable.music.presentation.Event
 import com.google.android.horologist.compose.layout.ColumnItemType

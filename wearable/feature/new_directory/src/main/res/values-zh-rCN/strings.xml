@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="new_dir_failed">失败</string>
-    <string name="new_dir_name">文件夹名称</string>
-</resources>

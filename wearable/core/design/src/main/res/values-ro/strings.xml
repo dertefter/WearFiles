@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- home -->
+    <string name="music">Muzică</string>
+    <string name="docs">Documente</string>
+    <string name="files">Explorator</string>
+    <string name="settings">Setări</string>
+    <string name="storage">Memorie</string>
+    <string name="pinned">Fixate</string>
+    <string name="photo">Fotografii</string>
+    <string name="video">Videoclipuri</string>
+    <string name="received">Primite</string>
+    <!-- images -->
+    <string name="error">Eroare</string>
+    <string name="grant_permissions">Acordă permisiuni</string>
+    <string name="perm_title">Pentru acest ecran sunt necesare permisiuni</string>
+    <string name="images_title">Imagini</string>
+    <string name="nothing_here">Nimic aici…</string>
+    <!-- music -->
+    <string name="music_title">Muzică</string>
+    <!-- video -->
+    <string name="videos_title">Videoclipuri</string>
+    <!-- file_list -->
+    <string name="storage_name">Memorie</string>
+    <string name="file_list_error">Eroare</string>
+    <string name="select_all">Selectează tot</string>
+    <string name="deselect_all">Deselectează</string>
+    <!-- menu -->
+    <string name="rename">Redenumește</string>
+    <string name="delete">Șterge</string>
+    <string name="new_dir">Folder nou</string>
+    <string name="pin">Fixează pe ecranul principal</string>
+    <string name="unpin">Anulează fixarea</string>
+    <string name="paste">Lipește aici</string>
+    <string name="cut">Decupează</string>
+    <string name="copy">Copiază</string>
+    <string name="cancel_paste">Golește clipboardul</string>
+    <string name="wait">Te rog așteaptă…</string>
+    <!-- delete -->
+    <string name="delete_failed">Ștergerea a eșuat</string>
+    <string name="delete_title">Sigur?</string>
+    <!-- rename -->
+    <string name="rename_failed">Redenumirea a eșuat</string>
+    <string name="rename_title">Redenumește</string>
+    <string name="rename_name">Nume</string>
+    <!-- new_directory -->
+    <string name="new_dir_failed">Eșuat</string>
+    <string name="new_dir_name">Numele folderului</string>
+    <!-- onboarding -->
+    <string name="permission_required">Este necesară permisiunea de acces la fișiere</string>
+    <string name="grant_permission">Acordă permisiunea</string>
+    <string name="having_trouble">Nu funcționează?</string>
+    <string name="permission_alert">Din cauza limitărilor platformei Wear OS, aplicația nu poate obține singură acces la fișiere. Trebuie să faci asta manual:</string>
+    <string name="pt1">Conectează ceasul la un computer prin ADB</string>
+    <string name="pt2">Rulează următoarea comandă:</string>
+    <string name="pt3">Repornește aplicația</string>
+    <string name="info">Vezi instrucțiunile pe telefon</string>
+    <string name="send_success">Verifică telefonul</string>
+    <string name="send_failed">Instrucțiunile nu au putut fi trimise pe telefon</string>
+    <string name="success">Reușit</string>
+    <string name="failed">Eșuat</string>
+    <string name="try_grant_permissions">Încearcă să acorzi permisiunile fără PC</string>
+    <string name="error_opening_settings">Indisponibil pe acest dispozitiv</string>
+    <!-- settings -->
+    <string name="title">Setări</string>
+    <string name="about">Despre</string>
+    <string name="theming">Teme</string>
+    <string name="licences">Licențe open source</string>
+    <string name="sys_settings">Setări de sistem</string>
+    <string name="send_git_failed">Nu s-a putut trimite pe telefon</string>
+    <!-- theming -->
+    <string name="theme_title">Teme</string>
+    <string name="default_theme">Implicită</string>
+    <!-- text_viewer -->
+    <string name="empty">Fișier gol</string>
+    <!-- pdf_viewer -->
+    <string name="pdf_viewer_empty">Fișier gol</string>
+    <string name="pdf_viewer_loading">Se încarcă…</string>
+    <string name="pdf_viewer_error_with_message">Eroare: %1$s</string>
+    <string name="pdf_viewer_invalid_pdf">PDF invalid</string>
+    <string name="pdf_viewer_could_not_open_file_descriptor">Fișierul nu a putut fi deschis</string>
+    <!-- app module -->
+    <string name="launch_text_viewer">Deschide fișier text</string>
+    <string name="launch_image_viewer">Deschide imagine</string>
+    <string name="launch_pdf_viewer">Deschide fișier PDF</string>
+    <string name="error_no_app">Nu există nicio aplicație pentru acest fișier</string>
+    <string name="notification_channel_name">Transfer de fișiere</string>
+    <string name="notification_receiving_title">Se primește fișierul</string>
+    <string name="notification_receiving_desc">%1$s (%2$d%%)</string>
+</resources>

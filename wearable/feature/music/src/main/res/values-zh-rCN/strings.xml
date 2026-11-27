@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="error">错误</string>
-    <string name="grant_permissions">授予权限</string>
-    <string name="perm_title">需要权限才能访问</string>
-    <string name="music_title">音乐</string>
-    <string name="nothing_here">什么都没有…</string>
-</resources>

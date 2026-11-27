@@ -12,7 +12,7 @@ import com.dertefter.wearable.design.components.common.rememberSafeRotaryScrolla
 import com.dertefter.wearable.design.components.items.FileItem
 import com.dertefter.wearable.design.components.items.FileItemType
 import com.dertefter.wearable.design.icons.Icons
-import com.dertefter.wearable.menu.R
+import com.dertefter.wearable.design.R
 import com.dertefter.wearable.menu.presentation.Event
 import com.dertefter.wearable.menu.presentation.MenuAction
 import com.dertefter.wearable.menu.presentation.MenuActionType

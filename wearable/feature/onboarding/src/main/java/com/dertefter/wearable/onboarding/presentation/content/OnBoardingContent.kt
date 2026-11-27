@@ -35,7 +35,7 @@ import com.dertefter.wearable.design.components.items.BadgedTextItem
 import com.dertefter.wearable.design.components.items.CodeItem
 import com.dertefter.wearable.design.components.items.TextItem
 import com.dertefter.wearable.design.icons.Icons
-import com.dertefter.wearable.onboarding.R
+import com.dertefter.wearable.design.R
 import com.dertefter.wearable.onboarding.presentation.Event
 import com.google.android.horologist.compose.layout.rememberResponsiveColumnPadding
 

@@ -7,6 +7,7 @@ import android.net.Uri
 import android.widget.Toast
 import androidx.core.content.FileProvider
 import com.dertefter.wearable.data.repository.FileInteractionHandler
+import com.dertefter.wearable.design.R
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.File
 import javax.inject.Inject
@@ -36,7 +37,7 @@ class FileInteractionHandlerImpl @Inject constructor(
         try {
             context.startActivity(intent)
         } catch (e: ActivityNotFoundException) {
-            Toast.makeText(context, context.getString(com.dertefter.wearfiles.R.string.error_no_app), Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, context.getString(R.string.error_no_app), Toast.LENGTH_SHORT).show()
         }
     }
 

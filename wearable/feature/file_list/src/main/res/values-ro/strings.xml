@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="storage_name">Memorie</string>
-    <string name="file_list_error">Eroare</string>
-    <string name="select_all">Selectează tot</string>
-    <string name="deselect_all">Deselectează</string>
-</resources>

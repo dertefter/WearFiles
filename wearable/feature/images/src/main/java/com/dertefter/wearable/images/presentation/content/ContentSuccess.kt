@@ -25,7 +25,7 @@ import androidx.wear.compose.material3.lazy.rememberTransformationSpec
 import androidx.wear.compose.material3.lazy.transformedHeight
 import com.dertefter.wearable.design.components.common.rememberSafeRotaryScrollableBehavior
 import com.dertefter.wearable.design.components.items.CircleThumb
-import com.dertefter.wearable.images.R
+import com.dertefter.wearable.design.R
 import com.dertefter.wearable.images.data.MediaItem
 import com.dertefter.wearable.images.presentation.Event
 import com.google.android.horologist.compose.layout.ColumnItemType

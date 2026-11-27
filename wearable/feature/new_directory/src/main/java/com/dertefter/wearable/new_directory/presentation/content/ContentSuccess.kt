@@ -5,7 +5,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.dertefter.wearable.design.components.basic_screens.TextFieldDefaultScreen
 import com.dertefter.wearable.design.theme.WearFilesTheme
-import com.dertefter.wearable.new_directory.R
+import com.dertefter.wearable.design.R
 import com.dertefter.wearable.new_directory.presentation.Event
 
 @Composable

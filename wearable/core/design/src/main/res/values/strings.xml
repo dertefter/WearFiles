@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- home -->
+    <string name="music">Music</string>
+    <string name="docs">Documents</string>
+    <string name="files">Explorer</string>
+    <string name="settings">Settings</string>
+    <string name="storage">Storage</string>
+    <string name="home_title" translatable="false">WearFiles</string>
+    <string name="pinned">Pinned</string>
+    <string name="photo">Photos</string>
+    <string name="video">Videos</string>
+    <string name="received">Received</string>
+    <!-- images -->
+    <string name="error">Error</string>
+    <string name="grant_permissions">Grant permissions</string>
+    <string name="perm_title">Permissions are required to access this screen</string>
+    <string name="images_title">Images</string>
+    <string name="nothing_here">Nothing here…</string>
+    <!-- music -->
+    <string name="music_title">Music</string>
+    <!-- video -->
+    <string name="videos_title">Videos</string>
+    <!-- file_list -->
+    <string name="storage_name">Storage</string>
+    <string name="file_list_error">Error</string>
+    <string name="select_all">Select all</string>
+    <string name="deselect_all">Deselect</string>
+    <!-- menu -->
+    <string name="rename">Rename</string>
+    <string name="delete">Delete</string>
+    <string name="new_dir">New folder</string>
+    <string name="pin">Pin to the home</string>
+    <string name="unpin">Unpin from the home</string>
+    <string name="paste">Paste here</string>
+    <string name="cut">Cut</string>
+    <string name="copy">Copy</string>
+    <string name="cancel_paste">Clear clipboard</string>
+    <string name="wait">Please wait…</string>
+    <!-- delete -->
+    <string name="delete_failed">Delete failed</string>
+    <string name="delete_title">Really?</string>
+    <!-- rename -->
+    <string name="rename_failed">Failed to rename</string>
+    <string name="rename_title">Rename</string>
+    <string name="rename_name">Name</string>
+    <!-- new_directory -->
+    <string name="new_dir_failed">Failed</string>
+    <string name="new_dir_name">Folder name</string>
+    <!-- onboarding -->
+    <string name="permission_required">File access permission is required</string>
+    <string name="grant_permission">Grant permission</string>
+    <string name="having_trouble">Not working?</string>
+    <string name="permission_alert">Due to limitations of the Wear OS platform, the app cannot grant permission to access files. You need to do this manually:</string>
+    <string name="pt1">Connect your watch to a computer via ADB</string>
+    <string name="pt2">Run the following command:</string>
+    <string name="pt2_command" translatable="false">adb shell appops set --uid com.dertefter.wearfiles MANAGE_EXTERNAL_STORAGE allow</string>
+    <string name="pt3">Restart the app</string>
+    <string name="info">View instructions on phone</string>
+    <string name="send_success">Check your phone</string>
+    <string name="send_failed">Failed to send instructions to your phone</string>
+    <string name="success">Success</string>
+    <string name="failed">Failed</string>
+    <string name="try_grant_permissions">Try to grant permissions without PC</string>
+    <string name="error_opening_settings">Unavailable on your device</string>
+    <!-- settings -->
+    <string name="title">Settings</string>
+    <string name="about">About</string>
+    <string name="theming">Theming</string>
+    <string name="github" translatable="false">GitHub</string>
+    <string name="licences">Open Source Licences</string>
+    <string name="sys_settings">System settings</string>
+    <string name="send_git_failed">Failed to send to your phone</string>
+    <!-- theming -->
+    <string name="theme_title">Theming</string>
+    <string name="default_theme">Default</string>
+    <!-- text_viewer -->
+    <string name="empty">Empty file</string>
+    <!-- pdf_viewer -->
+    <string name="pdf_viewer_empty">Empty file</string>
+    <string name="pdf_viewer_loading">Loading…</string>
+    <string name="pdf_viewer_error_with_message">Error: %1$s</string>
+    <string name="pdf_viewer_invalid_pdf">Invalid PDF</string>
+    <string name="pdf_viewer_could_not_open_file_descriptor">Could not open file descriptor</string>
+    <!-- app module -->
+    <string name="launch_text_viewer">Open text file</string>
+    <string name="launch_image_viewer">Open picture</string>
+    <string name="launch_pdf_viewer">Open PDF file</string>
+    <string name="error_no_app">No app to open file</string>
+    <string name="notification_channel_name">File Transfer</string>
+    <string name="notification_receiving_title">Receiving file</string>
+    <string name="notification_receiving_desc">%1$s (%2$d%%)</string>
+</resources>

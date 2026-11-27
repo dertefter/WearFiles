@@ -22,7 +22,7 @@ import androidx.wear.compose.material3.lazy.transformedHeight
 import com.dertefter.wearable.design.components.common.rememberSafeRotaryScrollableBehavior
 import com.dertefter.wearable.design.components.items.FileItem
 import com.dertefter.wearable.design.icons.Icons
-import com.dertefter.wearable.settings.R
+import com.dertefter.wearable.design.R
 import com.google.android.horologist.compose.layout.ColumnItemType
 import com.google.android.horologist.compose.layout.rememberResponsiveColumnPadding
 import com.github.droibit.oss_licenses.ui.wear.compose.material3.WearableOssLicensesActivity

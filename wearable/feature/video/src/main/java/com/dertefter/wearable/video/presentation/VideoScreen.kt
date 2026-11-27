@@ -26,7 +26,7 @@ import androidx.wear.compose.material3.Text
 import com.dertefter.wearable.design.components.basic_screens.AskDefaultScreen
 import com.dertefter.wearable.design.components.basic_screens.ContentLoadingDefaultScreen
 import com.dertefter.wearable.design.icons.Icons
-import com.dertefter.wearable.video.R
+import com.dertefter.wearable.design.R
 import com.dertefter.wearable.video.presentation.content.ContentSuccess
 import com.dertefter.wearable.video.presentation.content.PermissionDialogState
 import com.dertefter.wearable.video.presentation.content.UiState

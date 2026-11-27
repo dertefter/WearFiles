@@ -16,7 +16,7 @@ import androidx.wear.compose.material3.ScreenScaffold
 import androidx.wear.compose.material3.Text
 import androidx.wear.compose.ui.tooling.preview.WearPreviewDevices
 import com.dertefter.wearable.design.components.common.rememberSafeRotaryScrollableBehavior
-import com.dertefter.wearable.text_viewer.R
+import com.dertefter.wearable.design.R
 import com.google.android.horologist.compose.layout.ColumnItemType
 import com.google.android.horologist.compose.layout.rememberResponsiveColumnPadding
 import com.yazantarifi.compose.library.MarkdownConfig

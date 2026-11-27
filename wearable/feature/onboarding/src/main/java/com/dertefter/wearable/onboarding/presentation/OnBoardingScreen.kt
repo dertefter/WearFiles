@@ -9,7 +9,7 @@ import androidx.wear.compose.material.dialog.Dialog
 import androidx.wear.compose.material3.Icon
 import androidx.wear.compose.material3.Text
 import com.dertefter.wearable.design.icons.Icons
-import com.dertefter.wearable.onboarding.R
+import com.dertefter.wearable.design.R
 import com.dertefter.wearable.onboarding.presentation.content.OnBoardingContent
 import com.dertefter.wearable.onboarding.presentation.content.DialogState
 

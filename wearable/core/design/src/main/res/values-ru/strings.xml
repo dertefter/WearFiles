@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- home -->
+    <string name="photo">Фото</string>
+    <string name="music">Музыка</string>
+    <string name="docs">Документы</string>
+    <string name="files">Файлы на устройстве</string>
+    <string name="settings">Настройки</string>
+    <string name="storage">Память устройства</string>
+    <string name="pinned">Закреплено</string>
+    <string name="video">Видео</string>
+    <string name="received">Получено</string>
+    <!-- images -->
+    <string name="error">Ошибка</string>
+    <string name="grant_permissions">Предоставить разрешения</string>
+    <string name="perm_title">Для доступа к этому разделу необходимы разрешения</string>
+    <string name="images_title">Изображения</string>
+    <string name="nothing_here">Тут пусто…</string>
+    <!-- music -->
+    <string name="music_title">Музыка</string>
+    <!-- video -->
+    <string name="videos_title">Видео</string>
+    <!-- file_list -->
+    <string name="storage_name">Память устройства</string>
+    <string name="file_list_error">Произошла ошибка</string>
+    <string name="select_all">Выбр. всё</string>
+    <string name="deselect_all">Отменить</string>
+    <!-- menu -->
+    <string name="rename">Переименовать</string>
+    <string name="delete">Удалить</string>
+    <string name="new_dir">Создать папку</string>
+    <string name="pin">Закрепить</string>
+    <string name="unpin">Открепить</string>
+    <string name="paste">Вставить сюда</string>
+    <string name="cut">Вырезать</string>
+    <string name="copy">Копировать</string>
+    <string name="cancel_paste">Отмена вставки</string>
+    <string name="wait">Подождите…</string>
+    <!-- delete -->
+    <string name="delete_failed">Ошибка удаления</string>
+    <string name="delete_title">Вы уверены?</string>
+    <!-- rename -->
+    <string name="rename_failed">Не удалось переименовать</string>
+    <string name="rename_title">Переименовать</string>
+    <string name="rename_name">Название</string>
+    <!-- new_directory -->
+    <string name="new_dir_failed">Ошибка</string>
+    <string name="new_dir_name">Имя папки</string>
+    <!-- onboarding -->
+    <string name="permission_required">Необходимо разрешение на доступ к файлам</string>
+    <string name="grant_permission">Предоставить разрешение</string>
+    <string name="having_trouble">Не выходит?</string>
+    <string name="permission_alert">В связи с ограничениями платформы Wear OS приложение не может выдать разрешение для доступа к файлам. Вам необходимо сделать это вручную:</string>
+    <string name="pt3">Перезапустите приложение</string>
+    <string name="info">Посмотреть инструкции на телефоне</string>
+    <string name="pt1">Подключите часы к компьютеру через ADB</string>
+    <string name="pt2">Выполните следующую команду:</string>
+    <string name="send_success">Проверьте Ваш телефон</string>
+    <string name="send_failed">Не удалось отправить инструкцию на Ваш телефон</string>
+    <string name="success">Успешно</string>
+    <string name="failed">Не удалось</string>
+    <string name="try_grant_permissions">Попробовать выдать разрешения без ПК</string>
+    <string name="error_opening_settings">Недоступно на вашем устройстве</string>
+    <!-- settings -->
+    <string name="title">Настройки</string>
+    <string name="about">О приложении</string>
+    <string name="theming">Тема</string>
+    <string name="licences">Лицензии ПО</string>
+    <string name="sys_settings">Системные настройки</string>
+    <string name="send_git_failed">Не удалось отправить ссылку на телефон</string>
+    <!-- theming -->
+    <string name="theme_title">Тема</string>
+    <string name="default_theme">По умлочанию</string>
+    <!-- text_viewer -->
+    <string name="empty">Пустой файл</string>
+    <!-- pdf_viewer -->
+    <string name="pdf_viewer_empty">Пустой файл</string>
+    <string name="pdf_viewer_loading">Загрузка…</string>
+    <string name="pdf_viewer_error_with_message">Ошибка: %1$s</string>
+    <string name="pdf_viewer_invalid_pdf">Некорректный PDF</string>
+    <string name="pdf_viewer_could_not_open_file_descriptor">Не удалось открыть файл</string>
+    <!-- app module -->
+    <string name="launch_text_viewer">Открыть текстовой файл</string>
+    <string name="launch_image_viewer">Открыть картинку</string>
+    <string name="launch_pdf_viewer">Открыть PDF файл</string>
+    <string name="error_no_app">Нет приложения для открытия файла</string>
+    <string name="notification_channel_name">Передача файлов</string>
+    <string name="notification_receiving_title">Получение файла</string>
+    <string name="notification_receiving_desc">%1$s (%2$d%%)</string>
+</resources>

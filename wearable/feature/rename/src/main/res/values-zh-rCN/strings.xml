@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="rename_failed">重命名失败</string>
-    <string name="rename_title">重命名</string>
-    <string name="rename_name">名称</string>
-</resources>

@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="rename_failed">Не удалось переименовать</string>
-    <string name="rename_title">Переименовать</string>
-    <string name="rename_name">Название</string>
-</resources>

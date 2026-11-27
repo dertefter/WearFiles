@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="delete_failed" >删除失败</string>
-    <string name="delete_title">删除?</string>
-</resources>

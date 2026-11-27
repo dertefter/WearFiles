@@ -34,7 +34,7 @@ import com.dertefter.wearable.design.components.items.FileItem
 import com.dertefter.wearable.design.components.items.FileItemType
 import com.dertefter.wearable.design.icons.Icons
 import com.dertefter.wearable.design.theme.WearFilesTheme
-import com.dertefter.wearable.theming.R
+import com.dertefter.wearable.design.R
 import com.google.android.horologist.compose.layout.ColumnItemType
 import com.google.android.horologist.compose.layout.rememberResponsiveColumnPadding
 

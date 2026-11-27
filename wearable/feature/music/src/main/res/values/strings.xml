@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="error">Error</string>
-    <string name="grant_permissions">Grant permissions</string>
-    <string name="perm_title">Permissions are required to access this screen</string>
-    <string name="music_title">Music</string>
-    <string name="nothing_here">Nothing here…</string>
-</resources>

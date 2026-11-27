@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.wear.compose.material3.CircularProgressIndicator
 import androidx.wear.compose.material3.MaterialTheme
 import androidx.wear.compose.material3.Text
-import com.dertefter.wearable.menu.R
+import com.dertefter.wearable.design.R
 
 @Composable
 fun OperationWorking() {

@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="storage_name">Storage</string>
-    <string name="file_list_error">Error</string>
-    <string name="select_all">Select all</string>
-    <string name="deselect_all">Deselect</string>
-</resources>

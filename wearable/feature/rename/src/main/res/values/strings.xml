@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="rename_failed">Failed to rename</string>
-    <string name="rename_title">Rename</string>
-    <string name="rename_name">Name</string>
-</resources>
